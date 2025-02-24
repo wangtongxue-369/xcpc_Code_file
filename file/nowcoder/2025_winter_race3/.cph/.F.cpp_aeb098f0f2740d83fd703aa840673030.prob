@@ -1,0 +1,1 @@
+{"name":"Local: F","url":"e:\\VS_Code_file\\file\\nowcoder\\2025_winter_race3\\F.cpp","tests":[{"id":1737868082525,"input":"5\n6 3 4 5\n20 0 0 0\n18 6 6 6\n1 1 1 0\n20 20 20 20","output":"Yes\nNo\nYes\nYes\nNo"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\nowcoder\\2025_winter_race3\\F.cpp","group":"local","local":true}

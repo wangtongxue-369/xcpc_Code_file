@@ -1,0 +1,1 @@
+{"name":"Local: M","url":"e:\\VS_Code_file\\file\\vjudge\\Ucup-Hangzhou\\M\\M.cpp","tests":[{"id":1726657215314,"input":"3 2 2","output":"10"},{"id":1726659166043,"input":"849586 233333 123456","output":"153307446989958297"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\vjudge\\Ucup-Hangzhou\\M\\M.cpp","group":"local","local":true}

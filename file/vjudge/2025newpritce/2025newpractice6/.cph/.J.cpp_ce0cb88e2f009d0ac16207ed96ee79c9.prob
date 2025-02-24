@@ -1,0 +1,1 @@
+{"name":"Local: J","url":"e:\\VS_Code_file\\file\\vjudge\\2025newpractice6\\J.cpp","tests":[{"id":1733191384812,"input":"5 2\n1 4\n3 2\n","output":"4\n"},{"id":1733191391284,"input":"10 3\n1 4 8\n4 2 4\n","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\vjudge\\2025newpractice6\\J.cpp","group":"local","local":true}

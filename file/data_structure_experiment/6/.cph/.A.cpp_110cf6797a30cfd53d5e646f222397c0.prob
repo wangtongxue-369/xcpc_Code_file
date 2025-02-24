@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\VS_Code_file\\file\\data_structure_experiment\\6\\A.cpp","tests":[{"id":1734614703152,"input":"5 6\n1 3\n1 2\n2 5\n4 3\n2 4\n1 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\data_structure_experiment\\6\\A.cpp","group":"local","local":true}

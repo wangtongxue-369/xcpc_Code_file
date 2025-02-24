@@ -1,0 +1,1 @@
+{"name":"Local: C","url":"e:\\VS_Code_file\\file\\nowcoder\\97908\\C.cpp","tests":[{"id":1733553331937,"input":"3\n10 1 10\n1 20 1\n10 1 10","output":"44"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\nowcoder\\97908\\C.cpp","group":"local","local":true}

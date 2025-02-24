@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"e:\\VS_Code_file\\file\\nowcoder\\牛客小白月赛105\\E.cpp","tests":[{"id":1732286546505,"input":"5\n((()))(())","output":"4 3 2 4 3"},{"id":1732286598387,"input":"3\n(()))(","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\nowcoder\\牛客小白月赛105\\E.cpp","group":"local","local":true}

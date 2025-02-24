@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\VS_Code_file\\file\\nowcoder\\2025_winter_race5\\A.cpp","tests":[{"id":1739195753577,"input":"6 *","output":"6 1"},{"id":1739195760908,"input":"5 +","output":"2 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\nowcoder\\2025_winter_race5\\A.cpp","group":"local","local":true}

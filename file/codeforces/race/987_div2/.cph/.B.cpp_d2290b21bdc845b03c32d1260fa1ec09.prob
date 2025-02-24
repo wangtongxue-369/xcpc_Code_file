@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"e:\\VS_Code_file\\file\\codeforces\\race\\987_div2\\B.cpp","tests":[{"id":1731673543402,"input":"2\n4\n2 1 3 4\n4\n4 2 3 1\n","output":"YES\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\codeforces\\race\\987_div2\\B.cpp","group":"local","local":true}

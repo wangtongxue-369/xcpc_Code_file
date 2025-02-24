@@ -1,0 +1,1 @@
+{"name":"Local: M","url":"e:\\VS_Code_file\\file\\nowcoder\\97908\\M.cpp","tests":[{"id":1733550670616,"input":"4\ns...\n..x.\n..x.\n..xt","output":"1"},{"id":1733550676495,"input":"3\nsxx\nx..\n..t","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\nowcoder\\97908\\M.cpp","group":"local","local":true}

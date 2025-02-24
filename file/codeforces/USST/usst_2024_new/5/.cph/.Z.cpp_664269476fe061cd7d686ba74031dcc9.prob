@@ -1,0 +1,1 @@
+{"name":"Local: Z","url":"e:\\VS_Code_file\\file\\codeforces\\USST\\usst_2024_new\\5\\Z.cpp","tests":[{"id":1732867838507,"input":"2\n3 3\n2 3 1\n10 233\n3 1 4 1 5 9 2 6 5 3\n","output":"4\n884545294\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\codeforces\\USST\\usst_2024_new\\5\\Z.cpp","group":"local","local":true}

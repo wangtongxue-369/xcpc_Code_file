@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"e:\\VS_Code_file\\file\\vjudge\\2025lanqiao\\3\\E.cpp","tests":[{"id":1740108382369,"input":"10 \n56 12 1 99 1000 234 33 55 99 812","output":"3 2 7 8 1 4 9 6 10 5\n291.90\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\vjudge\\2025lanqiao\\3\\E.cpp","group":"local","local":true}

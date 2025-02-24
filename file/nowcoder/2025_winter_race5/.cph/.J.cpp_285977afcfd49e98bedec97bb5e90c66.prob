@@ -1,0 +1,1 @@
+{"name":"Local: J","url":"e:\\VS_Code_file\\file\\nowcoder\\2025_winter_race5\\J.cpp","tests":[{"id":1739808301008,"input":"5\n01020","output":"60"},{"id":1739808309846,"input":"5\n00112","output":"55"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\nowcoder\\2025_winter_race5\\J.cpp","group":"local","local":true}

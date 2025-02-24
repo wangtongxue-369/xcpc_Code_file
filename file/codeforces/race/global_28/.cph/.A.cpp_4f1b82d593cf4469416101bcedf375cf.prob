@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\VS_Code_file\\file\\codeforces\\race\\global_28\\A.cpp","tests":[{"id":1734617963762,"input":"5\n165\n6369\n666\n114514\n133333332\n","output":"YES\nYES\nNO\nNO\nYES\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\codeforces\\race\\global_28\\A.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: C","url":"e:\\VS_Code_file\\file\\nowcoder\\牛客训练赛13\\C.cpp","tests":[{"id":1732894484352,"input":"3\n2 0\n2 1\n2 2","output":"0\n0\n1"},{"id":1732894770359,"input":"2\n4 2\n4 4","output":"2\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\nowcoder\\牛客训练赛13\\C.cpp","group":"local","local":true}

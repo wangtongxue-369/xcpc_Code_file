@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\VS_Code_file\\file\\vjudge\\2025lanqiao\\1\\A.cpp","tests":[{"id":1739852937050,"input":"31 16 ","output":"1F"},{"id":1739853665349,"input":"0 2","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\vjudge\\2025lanqiao\\1\\A.cpp","group":"local","local":true}

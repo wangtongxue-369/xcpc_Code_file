@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"e:\\VS_Code_file\\file\\codeforces\\USST\\2025_practice1\\E.cpp","tests":[{"id":1740316482191,"input":"3\n2 3\n1 1\n1 2\n2 1\n4 1\n1 4\n4 2\n1 2\n3 4","output":"0\n2\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\codeforces\\USST\\2025_practice1\\E.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\VS_Code_file\\file\\vjudge\\2020lenovo_cup\\A.cpp","tests":[{"id":1734276432164,"input":"3\n2 2 1 1\n4 4 2 1\n6 10 4 2","output":"2\n3\n6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\vjudge\\2020lenovo_cup\\A.cpp","group":"local","local":true}
