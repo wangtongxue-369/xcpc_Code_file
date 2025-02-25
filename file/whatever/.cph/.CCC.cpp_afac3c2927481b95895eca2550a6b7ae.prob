@@ -1,1 +1,0 @@
-{"name":"Local: CCC","url":"e:\\VS_Code_file\\file\\whatever\\CCC.cpp","tests":[{"id":1732359316087,"input":"5 5\n3 3 5 7\n1 2 4 4\n4 1 5 2\n2 2 5 8\n4 3 5 3\n5 4\n2 2 2 2\n3 3 3 3\n4 1 3 2\n4 2 4 3\n0 0\n","output":"307\n7489\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\whatever\\CCC.cpp","group":"local","local":true}

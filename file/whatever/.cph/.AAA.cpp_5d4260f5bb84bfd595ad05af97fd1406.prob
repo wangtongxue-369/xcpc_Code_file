@@ -1,1 +1,0 @@
-{"name":"Local: AAA","url":"e:\\VS_Code_file\\file\\whatever\\AAA.cpp","tests":[{"id":1739865120595,"input":"998244353","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\VS_Code_file\\file\\whatever\\AAA.cpp","group":"local","local":true}

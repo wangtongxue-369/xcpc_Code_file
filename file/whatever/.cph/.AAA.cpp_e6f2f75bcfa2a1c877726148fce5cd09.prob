@@ -1,1 +1,0 @@
-{"name":"Local: AAA","url":"e:\\xcpc_Code_file\\file\\whatever\\AAA.cpp","tests":[{"id":1740388270899,"input":"5\n2 3 45","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\whatever\\AAA.cpp","group":"local","local":true}
