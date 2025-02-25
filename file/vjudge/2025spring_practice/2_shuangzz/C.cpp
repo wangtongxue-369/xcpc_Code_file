@@ -11,34 +11,33 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    cin >> n;
-    ans = -1e18;
+    ll k, q;
+    cin >> n >> k >> q;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        ans = max(ans, a[i]);
     }
-    ll l = 1;
-    ll sum = 0;
-    for (int r = 1; r <= n; r++)
+    ll l = 1, len;
+    ans = 0;
+    ll r;
+    for (int l = 1; l <= n; l++)
     {
-        if (a[r] >= 0)
+        if (a[l] <= q)
         {
-            sum += a[r];
-            ans = max(ans, sum);
-        }
-        else
-        {
-            if (sum + a[r] >= 0)
+            r = l;
+            while (a[r] <= q && r <= n)
             {
-                sum += a[r];
-                ans = max(ans, sum);
+                r++;
             }
-            else
+            r--;
+            // cout << l << ' ' << r << '\n';
+            if ((r - l + 1) >= k)
             {
-                sum = 0;
-                l = r + 1;
+                len = r - l + 1;
+                ans += ((len - k + 1) + 1) * (len - k + 1) / 2;
             }
+            l = r;
+            continue;
         }
     }
     cout << ans << '\n';
@@ -47,7 +46,7 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin>>_;
+    cin >> _;
     while (_--)
     {
         solve();

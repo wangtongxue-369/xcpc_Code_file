@@ -11,33 +11,35 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
+    vector<ll> ve;
     cin >> n;
-    ans = -1e18;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        ans = max(ans, a[i]);
+        ve.push_back(a[i]);
     }
-    ll l = 1;
-    ll sum = 0;
-    for (int r = 1; r <= n; r++)
+    sort(ve.begin(), ve.end());
+    ll len = unique(ve.begin(), ve.end()) - ve.begin();
+    // cout << len << '\n';
+    ll l = 0, r = 0;
+    ans = 0;
+    for (r = 0; r < len; r++)
     {
-        if (a[r] >= 0)
+        // if (r==len-1)
+        // {
+        //     if (ve[])
+        //     break;
+        // }
+        if ((ve[r + 1] - ve[l] + 1) <= n && r != len - 1)
         {
-            sum += a[r];
-            ans = max(ans, sum);
+            continue;
         }
         else
         {
-            if (sum + a[r] >= 0)
+            ans = max(ans, r - l + 1);
+            while ((ve[r + 1] - ve[l] + 1) > n && r != len - 1)
             {
-                sum += a[r];
-                ans = max(ans, sum);
-            }
-            else
-            {
-                sum = 0;
-                l = r + 1;
+                l++;
             }
         }
     }
@@ -47,7 +49,7 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin>>_;
+    cin >> _;
     while (_--)
     {
         solve();
