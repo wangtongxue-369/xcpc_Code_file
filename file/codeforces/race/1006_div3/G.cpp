@@ -9,57 +9,49 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+ll z(ll x)
+{
+    return x * (x + 1) * (2 * x + 1) / 6;
+}
 void solve()
 {
     ans = 0;
     ll x, p, k, cnt;
     cin >> n >> k;
-    for (ll i = 2; i <= min(k, n); i++)
+    function<ll(ll n, ll p)> rev = [](ll n, ll p)
     {
-        ll sum = 0;
-        p = 1;
-        x = n;
-        cnt = 0;
-        queue<ll> q;
-        while (p <= x)
+        ll res = 0;
+        while (n)
         {
-            p *= i;
+            res = res * p + n % p;
+            n /= p;
         }
-        p /= i;
-        while (x)
+        res %= mod;
+        return res;
+    };
+    for (ll l = 2, r; l <= min(n, k); l = r + 1)
+    {
+        if (l * l <= n)
         {
-
-            q.push(x / p);
-
-            x %= p;
-            p /= i;
+            ans += rev(n, l);
+            r = l;
         }
-        ll len = q.size();
-        // if (i == 2)
-        // {
-        //     for (int j = 1; j <= len; j++)
-        //     {
-        //         cout << q.front() << ' ';
-        //         q.push(q.front());
-        //         q.pop();
-        //     }
-        //     cout << '\n';
-        // }
-
-        p = 1;
-        while (q.size())
+        else
         {
-            sum += p * q.front();
-            p *= i;
-            q.pop();
+            ll s1 = n / l;
+            r = min(k, (n / (n / l)));
+            ll a1 = n % l, an = n % r;
+            ans = (ans + s1 * (r - l + 1) % mod) % mod;
+            ans = (ans + (a1 * ((l + r) * (r - l + 1) / 2) % mod)) % mod;
+            ll s = ((z(r) % mod - z(l - 1) % mod) + mod) % mod;
+            ans = ((ans - s1 * s % mod) + mod) % mod;
+            ans = (ans + s1 * l * ((l + r) * (r - l + 1) / 2) % mod) % mod;
         }
-        ans += sum;
         ans %= mod;
     }
     if (k > n)
     {
-        __int128_t t = ((__int128_t)n * (__int128_t)(k - n)) % (__int128_t)mod;
-        ans = (ans + t) % mod;
+        ans = (ans + ((k - n) % mod) * n % mod) % mod;
     }
     cout << ans << '\n';
 }

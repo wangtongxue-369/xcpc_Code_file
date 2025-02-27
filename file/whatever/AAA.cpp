@@ -1,31 +1,49 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define ll long long
-#define ull unsigned long long
-#define INF 0x3f3f3f3f
-#define PII pair<ll, ll>
-const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
-const ll base1 = 131;
-const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-void solve()
+cin >> n >> m;
+ll x, y;
+vector ve(n + 10, vector<ll>());
+for (int i = 1; i <= m; i++)
 {
-    cin >> n;
-    for (ll i = 2024; i <= 2026; i++)
+    cin >> x >> y;
+    x--;
+    y--;
+    if (x != y)
     {
-        cin >> a[i];
+        ve[x].push_back(y);
     }
-    cout << ans << '\n';
 }
-signed main()
+for (auto it : ve)
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    // cin>>_;
-    while (_--)
-    {
-        solve();
-    }
-    return 0;
+    sort(it.begin(), it.end());
 }
+mint ans(1);
+auto dfs = [&](this auto &&self, ll l, ll r) -> void
+{
+    if (l == r)
+    {
+        return;
+    }
+    ll p = l;
+    ll cnt = 0;
+    while (p < r)
+    {
+        while (!ve[p].empty() && ve[p].back() > r)
+        {
+            ve[p].pop_back();
+        }
+        if (ve[p].empty())
+        {
+            p++;
+            cnt++;
+        }
+        else
+        {
+            ll to = ve[p].back();
+            ve[p].pop_back();
+            self(p, to);
+            p = to;
+        }
+    }
+    ans = ans * cat[cnt];
+};
+dfs(0, n - 1);
+cout << ans.x << '\n';
