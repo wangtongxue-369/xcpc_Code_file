@@ -1,0 +1,1 @@
+{"name":"Local: 1002","url":"e:\\xcpc_Code_file\\file\\hduoj\\dingpa_spring_race\\1\\1002.cpp","tests":[{"id":1741356257256,"input":"3\n10 0\n1\n8 2\n1 3 5\n4 2\n1 3 4","output":"1\n623902721\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\hduoj\\dingpa_spring_race\\1\\1002.cpp","group":"local","local":true}
