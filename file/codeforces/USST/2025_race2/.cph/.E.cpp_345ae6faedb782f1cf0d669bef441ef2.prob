@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"e:\\xcpc_Code_file\\file\\codeforces\\USST\\2025_race2\\E.cpp","tests":[{"id":1741781520055,"input":"3\n3 2 1\n001\n100\n3 1 2\n001\n100\n3 3 2\n001\n100\n","output":"2\n1\n7\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\codeforces\\USST\\2025_race2\\E.cpp","group":"local","local":true}
