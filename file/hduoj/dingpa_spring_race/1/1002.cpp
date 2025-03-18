@@ -47,6 +47,16 @@ void solve()
 {
     ll k;
     cin >> n >> k;
+    vector<ll> a(k + 10, 0);
+    for (int i = 0; i <= k; k++)
+    {
+        cin >> a[i];
+    }
+    map<ll, PII> ma;
+    for (int i = 1; i <= k; i++)
+    {
+        ma[]
+    }
 }
 signed main()
 {

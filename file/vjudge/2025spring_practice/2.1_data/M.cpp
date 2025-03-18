@@ -12,15 +12,18 @@ ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
     cin >> n;
-    double x = 0, sum = 0, cj = 0;
-    double sumx = 0;
+    stack<ll> st;
     for (int i = 1; i <= n; i++)
     {
-        cin >> x >> cj;
-        sumx += x;
-        sum += x * cj;
+        cin >> a[i];
+        while (st.size() && st.top() <= a[i])
+        {
+            st.pop();
+        }
+        ans += st.size();
+        st.push(a[i]);
     }
-    cout << sum / sumx << '\n';
+    cout << ans << '\n';
 }
 signed main()
 {

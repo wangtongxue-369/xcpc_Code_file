@@ -11,22 +11,24 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    cin >> n;
-    double x = 0, sum = 0, cj = 0;
-    double sumx = 0;
-    for (int i = 1; i <= n; i++)
+    ll k;
+    cin >> n >> k;
+    if (k % 2)
     {
-        cin >> x >> cj;
-        sumx += x;
-        sum += x * cj;
+        cout << 0 << '\n';
+        return;
     }
-    cout << sum / sumx << '\n';
+    else
+    {
+        ll x = (2 * (n - 1) / k + 1) / 2;
+        cout << n * x - (k * (x) * (x)) / 2 << '\n';
+    }
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin>>_;
+    cin >> _;
     while (_--)
     {
         solve();

@@ -12,21 +12,24 @@ ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
     cin >> n;
-    double x = 0, sum = 0, cj = 0;
-    double sumx = 0;
-    for (int i = 1; i <= n; i++)
+    bool flag = 0;
+
+    for (int i = 0; i <= __lg(n); i++)
     {
-        cin >> x >> cj;
-        sumx += x;
-        sum += x * cj;
+        for (int j = 0; j <= __lg(n); j++)
+        {
+
+            ll y = (1ll << i);
+
+            if ()
+        }
     }
-    cout << sum / sumx << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin>>_;
+    cin >> _;
     while (_--)
     {
         solve();

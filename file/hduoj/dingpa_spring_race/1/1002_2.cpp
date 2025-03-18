@@ -63,11 +63,6 @@ int main()
 
         // R 为满赛程轮数：R = ceil(log2(n))
         int R = (n == 1 ? 0 : ceilLog2(n));
-
-        // 对于每个威胁选手，计算其最小满足
-        // floor((p0-1) / (2^r)) == floor((x-1) / (2^r))
-        // 的 r（1 <= r <= R），记为 r_x
-        // 我们统计各轮 r 下威胁数量 F[r]（1-indexed，下标 1..R）
         vector<int> F(R + 1, 0);
         for (auto x : threats)
         {
