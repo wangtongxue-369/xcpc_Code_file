@@ -11,12 +11,17 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    vector<ll> ve;
-    ve.push_back(0);
-    ve.push_back(1);
-    ve.push_back(2);
-    ve.push_back(3);
-    cout << lower_bound(ve.begin(), ve.end(), 3) - ve.begin() << '\n';
+    char c;
+    cin >> n >> c;
+    m = (ll)(1.0 * n / 2 + 0.5);
+    for (int i = 1; i <= m; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            cout << c;
+        }
+        cout << '\n';
+    }
 }
 signed main()
 {

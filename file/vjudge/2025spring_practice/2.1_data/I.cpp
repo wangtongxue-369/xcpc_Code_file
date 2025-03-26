@@ -5,7 +5,7 @@ using namespace std;
 #define INF 0x3f3f3f3f
 #define PII pair<ll, ll>
 const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
+const ll MAXN = 4000050;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
@@ -16,35 +16,71 @@ void solve()
     cin >> s;
     ll p1 = 0, p2 = 0;
     stack<ll> st;
+    ll sum = 0;
+    stack<ll> st2;
+    // 未匹配的前缀（
+    // 未匹配的后缀 ）
     for (int i = 0; i < s.length(); i++)
     {
-        if ()
-    }
-    for (auto it : s)
-    {
-        if (it == ')')
+        if (s[i] == '(')
         {
-            p2++;
-        }
-    }
-    // ans = 1e18;
-    for (auto it : s)
-    {
-        if (it == '?')
-        {
+            st.push(i);
             continue;
         }
-        if (it == '(')
+        if (s[i] == ')')
         {
-            p1++;
+            if (st.size())
+            {
+                sum++;
+                f[st.top()] = 1;
+                f[i] = 1;
+                st.pop();
+            }
+            continue;
         }
-        else
-        {
-            p2--;
-        }
-        ans = max(ans, min(p1, p2));
     }
-    cout << 2 * ans << '\n';
+    ll q = 0, h = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (f[i] == 0 && s[i] == ')')
+        {
+            h++;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (f[i] == 0 && s[i] == '(')
+        {
+            q++;
+        }
+        if (f[i] == 0 && s[i] == ')')
+        {
+            h--;
+        }
+
+        if (s[i] == '?')
+        {
+            if (q == 0)
+            {
+                continue;
+            }
+            if (h == 0)
+            {
+                continue;
+            }
+            if (q <= h)
+            {
+                q--;
+                sum++;
+            }
+            else
+            {
+                h--;
+                sum++;
+            }
+        }
+    }
+    cout << sum * 2 << '\n';
 }
 signed main()
 {

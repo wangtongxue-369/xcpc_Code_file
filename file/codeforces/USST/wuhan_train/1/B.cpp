@@ -11,18 +11,34 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
+    ll k;
+    cin >> n >> k;
     vector<ll> ve;
-    ve.push_back(0);
-    ve.push_back(1);
-    ve.push_back(2);
-    ve.push_back(3);
-    cout << lower_bound(ve.begin(), ve.end(), 3) - ve.begin() << '\n';
+    ans = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+        ans += a[i] / k;
+        ve.push_back(k - a[i] % k);
+    }
+    sort(ve.begin(), ve.end());
+    cin >> m;
+    for (auto it : ve)
+    {
+        if (m >= it)
+        {
+            ans++;
+            m -= it;
+        }
+    }
+    ans += m / k;
+    cout << ans << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin>>_;
+    cin >> _;
     while (_--)
     {
         solve();

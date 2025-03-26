@@ -1,0 +1,1 @@
+{"name":"Local: 11","url":"e:\\xcpc_Code_file\\file\\pta\\2025_tinati_practice\\11.cpp","tests":[{"id":1742965705178,"input":"1 1\n6\n8 10 9 12\n5 10 5 10\n3 8 5 12\n12 18 1 13\n4 16 12 15\n15 1 1 16","output":"A\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\pta\\2025_tinati_practice\\11.cpp","group":"local","local":true}

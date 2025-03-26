@@ -11,12 +11,21 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    vector<ll> ve;
-    ve.push_back(0);
-    ve.push_back(1);
-    ve.push_back(2);
-    ve.push_back(3);
-    cout << lower_bound(ve.begin(), ve.end(), 3) - ve.begin() << '\n';
+    cin >> n;
+    map<ll, PII> ma;
+    ll s1, s2, s3;
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> s1 >> s2 >> s3;
+        ma[s2] = {s1, s3};
+    }
+    cin >> m;
+    while (m--)
+    {
+        ll w;
+        cin >> w;
+        cout << ma[w].first << ' ' << ma[w].second << '\n';
+    }
 }
 signed main()
 {
