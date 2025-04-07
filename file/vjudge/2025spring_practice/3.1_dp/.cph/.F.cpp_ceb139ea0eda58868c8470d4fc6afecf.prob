@@ -1,0 +1,1 @@
+{"name":"Local: F","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025spring_practice\\3.1_dp\\F.cpp","tests":[{"id":1743486768020,"input":"2 \n4 \n3 19 10 6 \n5 \n11 29 13 19 17 ","output":"2   \n5  "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025spring_practice\\3.1_dp\\F.cpp","group":"local","local":true}

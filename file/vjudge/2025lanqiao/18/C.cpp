@@ -9,38 +9,38 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+
 void solve()
 {
-    ll x;
-    cin >> x;
-    if (x < 5)
+    ll s1, s2;
+    cin >> s1 >> s2;
+    if (s1 == 2 && s2 == 2)
     {
-        cout << -1 << '\n';
+        cout << 1 << '\n';
         return;
     }
-    for (ll i = 0; i <= 31; i++)
+    ll p = __gcd(s1, s2);
+    if (p < 2)
     {
-        for (ll j = 0; j <= 31; j++)
+        cout << 0 << '\n';
+        return;
+    }
+    for (ll i = 2; i * i <= p; i++)
+    {
+        if (s1 % i == 0 && s2 % i == 0)
         {
-            if (i == j)
-            {
-                continue;
-            }
-            ll y = (1ll << i) + (1ll << j);
-            if (y < x && ((1ll << i) & x) && (!((1ll << j) & x)))
-            {
-                cout << (1ll << i) + (1ll << j) << '\n';
-                return;
-            }
+            cout << (s1 / i) * (s2 / i) << '\n';
+            return;
         }
     }
-    cout << -1 << '\n';
+    cout << (s1 / p) * (s2 / p) << '\n';
+    return;
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    cin >> _;
+    // cin>>_;
     while (_--)
     {
         solve();

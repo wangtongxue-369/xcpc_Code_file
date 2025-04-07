@@ -11,30 +11,21 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    ll x;
-    cin >> x;
-    if (x < 5)
+    cin >> n >> m;
+    if (m >= 25)
     {
-        cout << -1 << '\n';
+        cout << "Yes\n";
         return;
     }
-    for (ll i = 0; i <= 31; i++)
+    for (int i = 1; i <= m; i++)
     {
-        for (ll j = 0; j <= 31; j++)
+        if (n % i != i - 1)
         {
-            if (i == j)
-            {
-                continue;
-            }
-            ll y = (1ll << i) + (1ll << j);
-            if (y < x && ((1ll << i) & x) && (!((1ll << j) & x)))
-            {
-                cout << (1ll << i) + (1ll << j) << '\n';
-                return;
-            }
+            cout << "Yes\n";
+            return;
         }
     }
-    cout << -1 << '\n';
+    cout << "No\n";
 }
 signed main()
 {

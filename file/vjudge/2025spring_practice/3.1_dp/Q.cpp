@@ -11,36 +11,39 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    ll x;
-    cin >> x;
-    if (x < 5)
+    cin >> n;
+    for (int i = 1; i <= n; i++)
     {
-        cout << -1 << '\n';
-        return;
-    }
-    for (ll i = 0; i <= 31; i++)
-    {
-        for (ll j = 0; j <= 31; j++)
+        cin >> a[i];
+        ll k = 0;
+        for (int j = 0; j <= 30; j++)
         {
-            if (i == j)
+            if (((1 << j) & a[i]))
             {
-                continue;
+                k = max(k, f[j]);
+                // f[j]++;
             }
-            ll y = (1ll << i) + (1ll << j);
-            if (y < x && ((1ll << i) & x) && (!((1ll << j) & x)))
+        }
+        for (int j = 0; j <= 30; j++)
+        {
+            if ((1 << j) & a[i])
             {
-                cout << (1ll << i) + (1ll << j) << '\n';
-                return;
+                f[j] = max(f[j] + 1, k + 1);
             }
         }
     }
-    cout << -1 << '\n';
+    ans = 0;
+    for (int i = 0; i <= 30; i++)
+    {
+        ans = max(ans, f[i]);
+    }
+    cout << ans << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    cin >> _;
+    // cin>>_;
     while (_--)
     {
         solve();

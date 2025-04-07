@@ -9,32 +9,33 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+bool cmp(ll s1, ll s2)
+{
+    return s1 > s2;
+}
 void solve()
 {
-    ll x;
-    cin >> x;
-    if (x < 5)
+    cin >> n;
+    map<ll, vector<ll>> ma;
+    for (int i = 1; i <= n; i++)
     {
-        cout << -1 << '\n';
-        return;
+        cin >> a[i];
+        ma[a[i] - i].push_back(a[i]);
     }
-    for (ll i = 0; i <= 31; i++)
+    ans = 0;
+    for (auto [i, ve] : ma)
     {
-        for (ll j = 0; j <= 31; j++)
+        sort(ve.begin(), ve.end(), cmp);
+        for (int i = 0; i < ve.size(); i++)
         {
-            if (i == j)
+            if (i + 1 < ve.size())
             {
-                continue;
-            }
-            ll y = (1ll << i) + (1ll << j);
-            if (y < x && ((1ll << i) & x) && (!((1ll << j) & x)))
-            {
-                cout << (1ll << i) + (1ll << j) << '\n';
-                return;
+                ans += max(0ll, ve[i] + ve[i + 1]);
+                i++;
             }
         }
     }
-    cout << -1 << '\n';
+    cout << ans << '\n';
 }
 signed main()
 {
