@@ -8,18 +8,18 @@ const ll mod = 1e9 + 7;
 const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-struct Person
+ll _ = 1, n, m, ans = 0, f[MAXN];
+struct node
 {
     int id;
-    int income = 0;
+    int sr = 0;
     int count = 0;
 };
 
-bool cmp(const Person &a, const Person &b)
+bool cmp(const node &a, const node &b)
 {
-    if (a.income != b.income)
-        return a.income > b.income;
+    if (a.sr != b.sr)
+        return a.sr > b.sr;
     if (a.count != b.count)
         return a.count > b.count;
     return a.id < b.id;
@@ -28,10 +28,10 @@ void solve()
 {
     int N;
     cin >> N;
-    vector<Person> people(N + 1);
+    vector<node> a(N + 1);
     for (int i = 1; i <= N; ++i)
     {
-        people[i].id = i;
+        a[i].id = i;
     }
 
     for (int i = 1; i <= N; ++i)
@@ -40,17 +40,17 @@ void solve()
         cin >> K;
         for (int j = 0; j < K; ++j)
         {
-            int N_j, P_j;
-            cin >> N_j >> P_j;
-            people[N_j].income += P_j;
-            people[N_j].count++;
-            people[i].income -= P_j;
+            int nj, pj;
+            cin >> nj >> pj;
+            a[nj].sr += pj;
+            a[nj].count++;
+            a[i].sr -= pj;
         }
     }
-    sort(people.begin() + 1, people.end(), cmp);
+    sort(a.begin() + 1, a.end(), cmp);
     for (int i = 1; i <= N; ++i)
     {
-        printf("%d %.2f\n", people[i].id, people[i].income / 100.0);
+        printf("%d %.2f\n", a[i].id, a[i].sr / 100.0);
     }
 }
 

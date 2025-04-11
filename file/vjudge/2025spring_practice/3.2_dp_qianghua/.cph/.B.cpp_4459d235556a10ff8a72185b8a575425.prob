@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025spring_practice\\3.2_dp_qianghua\\B.cpp","tests":[{"id":1744199742582,"input":"2 2\t         \n1 1 1\t\t\n2 2 2\n","output":"1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025spring_practice\\3.2_dp_qianghua\\B.cpp","group":"local","local":true}

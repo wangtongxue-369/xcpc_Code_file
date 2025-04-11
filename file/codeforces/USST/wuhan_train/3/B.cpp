@@ -12,36 +12,32 @@ ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
     cin >> n;
-    set<ll> se;
+    ll sum = 0;
+    map<ll, vector<ll>> ma;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        se.insert(a[i]);
+        sum += a[i];
+        ma[a[i]].push_back(i);
     }
 
-    ll w = 1000;
-    while (w--)
+    ll p = sum * 2 / n;
+    for (int i = 1; i <= n; i++)
     {
-        vector<ll> ve;
-        set<ll> tmp = se;
-        for (auto it : se)
+        if (ma[p - a[i]].size() > 0)
         {
-            ve.push_back(it);
+            f[i] = ma[p - a[i]].back();
+            ma[p - a[i]].pop_back();
         }
-        // cout << ve[2] << ' ' << ve[3] << '\n';
-        for (int i = 0; i < ve.size(); i++)
+        else
         {
-            for (int j = 0; j < ve.size(); j++)
-            {
-                tmp.insert((ve[i] & ve[j]));
-                tmp.insert((ve[i] | ve[j]));
-            }
+            cout << -1 << '\n';
+            return;
         }
-        se = tmp;
     }
-    for (auto it : se)
+    for (int i = 1; i <= n; i++)
     {
-        cout << it << ' ';
+        cout << f[i] << ' ';
     }
     cout << '\n';
 }

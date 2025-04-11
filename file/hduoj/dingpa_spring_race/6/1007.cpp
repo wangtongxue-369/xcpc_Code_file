@@ -12,44 +12,45 @@ ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
     cin >> n;
-    set<ll> se;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        se.insert(a[i]);
     }
-
-    ll w = 1000;
-    while (w--)
+    string s;
+    cin >> s;
+    s = ' ' + s;
+    vector<ll> r, b;
+    for (int i = 1; i <= n; i++)
     {
-        vector<ll> ve;
-        set<ll> tmp = se;
-        for (auto it : se)
+        if (s[i] == 'R')
         {
-            ve.push_back(it);
+            r.push_back(a[i]);
         }
-        // cout << ve[2] << ' ' << ve[3] << '\n';
-        for (int i = 0; i < ve.size(); i++)
+        else
         {
-            for (int j = 0; j < ve.size(); j++)
-            {
-                tmp.insert((ve[i] & ve[j]));
-                tmp.insert((ve[i] | ve[j]));
-            }
+            b.push_back(a[i]);
         }
-        se = tmp;
     }
-    for (auto it : se)
+    ll cs = min(r.size(), b.size());
+    ans = 0;
+    sort(r.begin(), r.end(), greater<ll>());
+    sort(b.begin(), b.end(), greater<ll>());
+    for (int i = 0; i < cs; i++)
     {
-        cout << it << ' ';
+        ans += r[i];
+        ans += b[i];
     }
-    cout << '\n';
+    if (cs == b.size() && cs < r.size())
+    {
+        ans += r[cs];
+    }
+    cout << ans << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin >> _;
+    cin >> _;
     while (_--)
     {
         solve();

@@ -12,44 +12,36 @@ ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
     cin >> n;
-    set<ll> se;
+    map<ll, ll> ma;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        se.insert(a[i]);
     }
-
-    ll w = 1000;
-    while (w--)
+    ll res = 0;
+    ans = 1e18;
+    for (int i = 1; i <= n; i++)
     {
-        vector<ll> ve;
-        set<ll> tmp = se;
-        for (auto it : se)
+        if (!ma.contains(a[i]))
         {
-            ve.push_back(it);
+            f[i] = f[i - 1] + 1;
+            ma[a[i]] = i;
         }
-        // cout << ve[2] << ' ' << ve[3] << '\n';
-        for (int i = 0; i < ve.size(); i++)
+        else
         {
-            for (int j = 0; j < ve.size(); j++)
+            f[i] = min(f[i - 1] + 1, f[ma[a[i]] - 1]);
+            if (f[i - 1] < f[ma[a[i]] - 1])
             {
-                tmp.insert((ve[i] & ve[j]));
-                tmp.insert((ve[i] | ve[j]));
+                ma[a[i]] = i;
             }
         }
-        se = tmp;
     }
-    for (auto it : se)
-    {
-        cout << it << ' ';
-    }
-    cout << '\n';
+    cout << n - f[n] << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin >> _;
+    cin >> _;
     while (_--)
     {
         solve();

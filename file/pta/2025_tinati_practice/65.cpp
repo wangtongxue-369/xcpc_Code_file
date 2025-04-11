@@ -9,22 +9,33 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+
 void solve()
 {
-    n = 4;
-    vector<ll> ve;
-    for (int i = 0; i < n; i++)
+    cin >> n;
+    ans = 0;
+    // string s1;
+    vector<ll> s1;
+    ll x;
+    for (int i = 1; i <= n; i++)
     {
-        ve.push_back(i);
+        cin >> x;
+        s1.push_back(x);
     }
-    while (next_permutation(ve.begin(), ve.end()))
+    vector<ll> tails;
+    for (auto num : s1)
     {
-        for (auto it : ve)
+        auto it = lower_bound(tails.begin(), tails.end(), num);
+        if (it == tails.end())
         {
-            cout << it << ' ';
+            tails.push_back(num);
         }
-        cout << '\n';
+        else
+        {
+            *it = num;
+        }
     }
+    cout << tails.size() << '\n';
 }
 signed main()
 {

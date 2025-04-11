@@ -27,7 +27,7 @@
 			"{",
 			"\tios::sync_with_stdio(false);",
 			"\tcin.tie(0);",
-			"\tcin >> _;",
+			"\t//cin >> _;",
 			"\twhile (_--)",
 			"\t{",
 			"\t\tsolve();",
