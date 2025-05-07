@@ -16,6 +16,18 @@ vector<vector<ll>> Allocation;
 vector<vector<ll>> Need;
 vector<string> process_names;
 
+string vectorToString(const vector<ll> &v)
+{
+    string s;
+    for (size_t i = 0; i < v.size(); ++i)
+    {
+        s += to_string(v[i]);
+        if (i != v.size() - 1)
+            s += " ";
+    }
+    return s;
+}
+
 void initData()
 {
     cout << "Input the type of resource and number of customer:\n";
@@ -57,24 +69,19 @@ void initData()
     }
 }
 
-void prllVector(const vector<ll> &v)
-{
-    for (ll val : v)
-        cout << val << " ";
-}
-
 bool isSafe(vector<ll> work, vector<vector<ll>> alloc, vector<vector<ll>> need, vector<ll> &safeSeq)
 {
-    vector<bool> finish(n, false);
+    vector<bool> vis(n, false);
     safeSeq.clear();
+    vector<string> outline;
+    outline.push_back("Name\tWork\t\tNeed\t\tAllocation\tWork+Allocation\tFinish\n");
 
-    cout << "\nName\tWork\t\tNeed\t\tAllocation\tWork+ Allocation\tFinish\n";
     for (ll cnt = 0; cnt < n; cnt++)
     {
         bool found = false;
         for (ll i = 0; i < n; i++)
         {
-            if (!finish[i])
+            if (!vis[i])
             {
                 bool flag = true;
                 for (ll j = 0; j < m; j++)
@@ -88,25 +95,21 @@ bool isSafe(vector<ll> work, vector<vector<ll>> alloc, vector<vector<ll>> need, 
 
                 if (flag)
                 {
-                    cout << process_names[i] << "\t";
-                    prllVector(work);
-                    cout << "\t";
-                    prllVector(need[i]);
-                    cout << "\t";
-                    prllVector(alloc[i]);
-                    cout << "\t";
+                    string line;
+                    line += process_names[i] + "   ";
+                    line += vectorToString(work) + "   ";
+                    line += vectorToString(need[i]) + "   ";
+                    line += vectorToString(alloc[i]) + "   ";
 
                     vector<ll> new_work = work;
                     for (ll j = 0; j < m; j++)
-                    {
                         new_work[j] += alloc[i][j];
-                    }
 
-                    prllVector(new_work);
-                    cout << "\tT\n";
+                    line += vectorToString(new_work) + "   T\n";
+                    outline.push_back(line);
 
                     work = new_work;
-                    finish[i] = true;
+                    vis[i] = true;
                     safeSeq.push_back(i);
                     found = true;
                     break;
@@ -114,17 +117,20 @@ bool isSafe(vector<ll> work, vector<vector<ll>> alloc, vector<vector<ll>> need, 
             }
         }
         if (!found)
+        {
             break;
+        }
     }
-
     if (safeSeq.size() == n)
     {
+        for (const auto &line : outline)
+            cout << line;
         cout << "\nSYSTEM SECURITY!!!\n";
         return true;
     }
     else
     {
-        cout << "\nRESOURCE INSECURITY!!!\n";
+        // cout << "\nRESOURCE INSECURITY!!!\n";
         return false;
     }
 }
@@ -137,15 +143,12 @@ void securityCheck()
 
 void requestCheck()
 {
-    string line, pname;
+    string pname;
     vector<ll> req(m);
     cout << "Please input the customer's name and request:\n";
-
     cin >> pname;
     for (ll j = 0; j < m; j++)
-    {
         cin >> req[j];
-    }
 
     ll pid = -1;
     for (ll i = 0; i < n; i++)
@@ -161,6 +164,7 @@ void requestCheck()
         cout << "Error: Invalid process!\n";
         return;
     }
+
     for (ll j = 0; j < m; j++)
     {
         if (req[j] > Need[pid][j])
@@ -169,6 +173,7 @@ void requestCheck()
             return;
         }
     }
+
     for (ll j = 0; j < m; j++)
     {
         if (req[j] > Available[j])
@@ -178,6 +183,7 @@ void requestCheck()
             return;
         }
     }
+
     vector<ll> oldAvail = Available;
     vector<vector<ll>> oldAlloc = Allocation;
     vector<vector<ll>> oldNeed = Need;
@@ -188,9 +194,13 @@ void requestCheck()
         Allocation[pid][j] += req[j];
         Need[pid][j] -= req[j];
     }
+
     vector<ll> safeSeq;
     if (isSafe(Available, Allocation, Need, safeSeq))
     {
+        Available = oldAvail;
+        Allocation = oldAlloc;
+        Need = oldNeed;
         cout << "CUSTOMER " << pname << " CAN GET RESOURCES IMMEDIATELY\n";
     }
     else
@@ -202,18 +212,17 @@ void requestCheck()
         cout << "CUSTOMER " << pname << " CAN NOT OBTAIN RESOURCES IMMEDIATELY\n";
     }
 }
-void slove()
+
+void solve()
 {
     initData();
-
     while (true)
     {
-        cout << "\n1、judge the system security\n";
-        cout << "2、judge the request security\n";
-        cout << "3、quit\n";
+        cout << "\n1. Check system security\n";
+        cout << "2. Check request security\n";
+        cout << "3. Quit\n";
         ll choice;
         cin >> choice;
-        cin.ignore();
         switch (choice)
         {
         case 1:
@@ -224,16 +233,14 @@ void slove()
             break;
         case 3:
             return;
+        default:
+            cout << "Invalid choice!\n";
         }
     }
 }
-signed main()
+
+int main()
 {
-    ll _ = 1;
-    // cin>>_;
-    while (_--)
-    {
-        slove();
-    }
+    solve();
     return 0;
 }
