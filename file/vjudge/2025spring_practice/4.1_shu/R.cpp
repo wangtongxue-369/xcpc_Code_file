@@ -5,11 +5,19 @@ using namespace std;
 #define INF 0x3f3f3f3f
 #define PII pair<ll, ll>
 const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
+const ll MAXN = 1000005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], ha[MAXN];
-
+ll _ = 1, n, m, ans = 0, a[MAXN]; // ha[MAXN][2];
+vector<array<ll, 2>> ve(MAXN + 10);
+ll son[MAXN];
+int count(int x)
+{
+    if (x == -1)
+        return 0;
+    son[x] = count(ve[x][0]) + count(ve[x][1]) + 1;
+    return son[x];
+}
 void solve()
 {
     cin >> n;
@@ -18,38 +26,44 @@ void solve()
         cin >> a[i];
     }
     ll u, v;
-    vector<vector<ll>> ve(n + 10);
+
     for (ll i = 1; i <= n; i++)
     {
-        cin >> u >> v;
-        if (u != -1)
+        cin >> ve[i][0] >> ve[i][1];
+    }
+    count(1);
+    function<bool(ll x, ll y)> dfs = [&](ll x, ll y) -> bool
+    {
+        if (x == -1 && y == -1)
         {
-            ve[i].push_back(u);
+            return 1;
         }
-        if (v != -1)
+        if (x == -1 || y == -1)
         {
-            ve[i].push_back(v);
+            return 0;
+        }
+        if (a[x] != a[y])
+        {
+            return 0;
+        }
+        return dfs(ve[x][0], ve[y][1]) && dfs(ve[x][1], ve[y][0]);
+    };
+    ans = 0;
+    for (ll i = 1; i <= n; i++)
+    {
+        if (dfs(i, i))
+        {
+            ans = max(ans, son[i]);
         }
     }
-    function<ll(ll x, ll d)> dfs = [&](ll x, ll d)
-    {
-        ll res = 0;
-        if (ve[x].size() == 2)
-        {
-        }
-    };
+    cout << ans << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     // cin >> _;
-    ha[0] = base1;
-    for (int i = 1; i <= n; i++)
-    {
-        ha[i] = ha[i - 1] * base1;
-        ha[i] %= mod;
-    }
+
     while (_--)
     {
         solve();

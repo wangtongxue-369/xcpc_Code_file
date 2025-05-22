@@ -1,239 +1,64 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <set>
 using namespace std;
-#define ll long long
-#define ull unsigned long long
-#define INF 0x3f3f3f3f
-#define PII pair<ll, ll>
-const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
-const ll base1 = 131;
-const ll base2 = 127;
 
-ll m, n;
-vector<ll> Available;
-vector<vector<ll>> Max;
-vector<vector<ll>> Allocation;
-vector<vector<ll>> Need;
-vector<string> process_names;
+const int MAXN = 105; // 假设n,m <= 100
+int sg[MAXN][MAXN];
 
-void initData()
+int get_sg(int a, int b)
 {
-    cout << "Input the type of resource and number of customer:\n";
-    cin >> m >> n;
-    cin.ignore();
+    cout << a << ' ' << b << '\n';
+    if (sg[a][b] != -1)
+        return sg[a][b];
+    set<int> s;
 
-    Max.resize(n, vector<ll>(m));
-    Allocation.resize(n, vector<ll>(m));
-    process_names.resize(n);
-    Need.resize(n, vector<ll>(m));
-
-    cout << "Input the amount of resource (maximum , allocated) of each customer:\n";
-    for (ll i = 0; i < n; i++)
+    // 从a取出2k个，放k个到b中
+    for (int k = 1; 2 * k <= a; ++k)
     {
-        cin >> process_names[i];
-        for (ll j = 0; j < m; j++)
-        {
-            cin >> Max[i][j];
-        }
-        for (ll j = 0; j < m; j++)
-        {
-            cin >> Allocation[i][j];
-        }
+        s.insert(get_sg(a - 2 * k, b + k));
     }
 
-    cout << "Input the amount of resources(available):\n";
-    Available.resize(m);
-    for (ll j = 0; j < m; j++)
+    // 从b取出2k个，放k个到a中
+    for (int k = 1; 2 * k <= b; ++k)
     {
-        cin >> Available[j];
+        s.insert(get_sg(a + k, b - 2 * k));
     }
 
-    for (ll i = 0; i < n; i++)
-    {
-        for (ll j = 0; j < m; j++)
-        {
-            Need[i][j] = Max[i][j] - Allocation[i][j];
-        }
-    }
+    // mex
+    int g = 0;
+    while (s.count(g))
+        ++g;
+    return sg[a][b] = g;
 }
 
-void prllVector(const vector<ll> &v)
+int main()
 {
-    for (ll val : v)
-        cout << val << " ";
-}
+    // 初始化
+    for (int i = 0; i < MAXN; ++i)
+        for (int j = 0; j < MAXN; ++j)
+            sg[i][j] = -1;
 
-bool isSafe(vector<ll> work, vector<vector<ll>> alloc, vector<vector<ll>> need, vector<ll> &safeSeq)
-{
-    vector<bool> finish(n, false);
-    safeSeq.clear();
+    // 打表
+    for (int i = 0; i < MAXN; ++i)
+        for (int j = 0; j < MAXN; ++j)
+            get_sg(i, j);
 
-    cout << "\nName\tWork\t\tNeed\t\tAllocation\tWork+ Allocation\tFinish\n";
-    for (ll cnt = 0; cnt < n; cnt++)
+    int n, m;
+    cin >> n >> m;
+
+    for (int i = 0; i <= n; i++)
     {
-        bool found = false;
-        for (ll i = 0; i < n; i++)
+        for (int j = 0; j <= m; j++)
         {
-            if (!finish[i])
-            {
-                bool flag = true;
-                for (ll j = 0; j < m; j++)
-                {
-                    if (need[i][j] > work[j])
-                    {
-                        flag = false;
-                        break;
-                    }
-                }
-
-                if (flag)
-                {
-                    cout << process_names[i] << "\t";
-                    prllVector(work);
-                    cout << "\t";
-                    prllVector(need[i]);
-                    cout << "\t";
-                    prllVector(alloc[i]);
-                    cout << "\t";
-
-                    vector<ll> new_work = work;
-                    for (ll j = 0; j < m; j++)
-                    {
-                        new_work[j] += alloc[i][j];
-                    }
-
-                    prllVector(new_work);
-                    cout << "\tT\n";
-
-                    work = new_work;
-                    finish[i] = true;
-                    safeSeq.push_back(i);
-                    found = true;
-                    break;
-                }
-            }
+            cout << sg[i][j] << ' ';
         }
-        if (!found)
-            break;
+        cout << '\n';
     }
 
-    if (safeSeq.size() == n)
-    {
-        cout << "\nSYSTEM SECURITY!!!\n";
-        return true;
-    }
+    if (sg[n][m] != 0)
+        cout << "Alice" << endl; // 先手必胜
     else
-    {
-        cout << "\nRESOURCE INSECURITY!!!\n";
-        return false;
-    }
-}
-
-void securityCheck()
-{
-    vector<ll> safeSeq;
-    isSafe(Available, Allocation, Need, safeSeq);
-}
-
-void requestCheck()
-{
-    string line, pname;
-    vector<ll> req(m);
-    cout << "Please input the customer's name and request:\n";
-
-    cin >> pname;
-    for (ll j = 0; j < m; j++)
-    {
-        cin >> req[j];
-    }
-
-    ll pid = -1;
-    for (ll i = 0; i < n; i++)
-    {
-        if (process_names[i] == pname)
-        {
-            pid = i;
-            break;
-        }
-    }
-    if (pid == -1)
-    {
-        cout << "Error: Invalid process!\n";
-        return;
-    }
-    for (ll j = 0; j < m; j++)
-    {
-        if (req[j] > Need[pid][j])
-        {
-            cout << "Error: Request exceeds need! Denied.\n";
-            return;
-        }
-    }
-    for (ll j = 0; j < m; j++)
-    {
-        if (req[j] > Available[j])
-        {
-            cout << "SYSTEM INSUFFICIENT!!!\n";
-            cout << "CUSTOMER " << pname << " CAN NOT OBTAIN RESOURCES IMMEDIATELY\n";
-            return;
-        }
-    }
-    vector<ll> oldAvail = Available;
-    vector<vector<ll>> oldAlloc = Allocation;
-    vector<vector<ll>> oldNeed = Need;
-
-    for (ll j = 0; j < m; j++)
-    {
-        Available[j] -= req[j];
-        Allocation[pid][j] += req[j];
-        Need[pid][j] -= req[j];
-    }
-    vector<ll> safeSeq;
-    if (isSafe(Available, Allocation, Need, safeSeq))
-    {
-        cout << "CUSTOMER " << pname << " CAN GET RESOURCES IMMEDIATELY\n";
-    }
-    else
-    {
-        Available = oldAvail;
-        Allocation = oldAlloc;
-        Need = oldNeed;
-        cout << "RESOURCE INSECURITY!!!\n";
-        cout << "CUSTOMER " << pname << " CAN NOT OBTAIN RESOURCES IMMEDIATELY\n";
-    }
-}
-void slove()
-{
-    initData();
-
-    while (true)
-    {
-        cout << "\n1、judge the system security\n";
-        cout << "2、judge the request security\n";
-        cout << "3、quit\n";
-        ll choice;
-        cin >> choice;
-        cin.ignore();
-        switch (choice)
-        {
-        case 1:
-            securityCheck();
-            break;
-        case 2:
-            requestCheck();
-            break;
-        case 3:
-            return;
-        }
-    }
-}
-signed main()
-{
-    ll _ = 1;
-    // cin>>_;
-    while (_--)
-    {
-        slove();
-    }
+        cout << "Brown" << endl; // 后手必胜
     return 0;
 }

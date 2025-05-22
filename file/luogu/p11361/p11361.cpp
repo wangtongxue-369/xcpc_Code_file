@@ -68,16 +68,16 @@ void solve()
 			}
 		}
 	}
-	// for (int i = 0; i < t1.length(); i++)
-	// {
-	// 	cout << a1[i] << ' ';
-	// }
-	// cout << '\n';
-	// for (int i = 0; i < t1.length(); i++)
-	// {
-	// 	cout << a2[i] << ' ';
-	// }
-	// cout << '\n';
+	for (int i = 0; i < t1.length(); i++)
+	{
+		cout << a1[i] << ' ';
+	}
+	cout << '\n';
+	for (int i = 0; i < t1.length(); i++)
+	{
+		cout << a2[i] << ' ';
+	}
+	cout << '\n';
 	for (int i = 0; i < t1.length(); i++)
 	{
 		if (s1[i] == '0')

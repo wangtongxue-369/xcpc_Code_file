@@ -8,15 +8,29 @@ const ll mod = 1e9 + 7;
 const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+ll _ = 1, n, m, ans = 0; // a[MAXN], f[MAXN];
 void solve()
 {
+	ll v;
+	cin >> n >> m >> v;
+	vector<ll> a(n + 10);
+	vector<PII> f(n + 10);
+	for (int i = 1; i < n; i++)
+	{
+		cin >> f[i].first >> f[i].second;
+	}
+	ll c, b;
+	for (int i = 1; i <= m; i++)
+	{
+		cin >> c >> b;
+		a[c] = b;
+	}
 }
 signed main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	// cin>>_;
+	cin >> _;
 	while (_--)
 	{
 		solve();
