@@ -8,27 +8,41 @@ const ll mod = 1e9 + 7;
 const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN];
-double f[MAXN];
+ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
     cin >> n;
+    ll gc = 0;
+    map<ll, ll> ma;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        f[i] = log2(1.0 * a[i]);
     }
-    ans = 0;
-    for (int i = 2; i <= n; i++)
+    sort(a + 1, a + 1 + n);
+    gc = a[1];
+    ll sum = 0;
+    for (int i = 1; i <= n; i++)
     {
-        if (f[i - 1] > f[i])
+        gc = __gcd(gc, a[i]);
+        if (a[i] == a[1])
         {
-            ll t = (ll)ceil(1.0 * (f[i - 1] - f[i] - 1e-10));
-            ans += t;
-            f[i] += (double)t;
+            sum++;
         }
+        ma[a[i] % 2]++;
     }
-    cout << ans << '\n';
+    if (gc == a[1])
+    {
+        cout << n - sum << '\n';
+        return;
+    }
+    if (ma[1] && ma[0])
+    {
+        cout << n << '\n';
+        return;
+    }
+    else
+    {
+    }
 }
 signed main()
 {

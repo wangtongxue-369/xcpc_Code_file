@@ -8,33 +8,20 @@ const ll mod = 1e9 + 7;
 const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN];
-double f[MAXN];
+ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
     cin >> n;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        f[i] = log2(1.0 * a[i]);
     }
-    ans = 0;
-    for (int i = 2; i <= n; i++)
-    {
-        if (f[i - 1] > f[i])
-        {
-            ll t = (ll)ceil(1.0 * (f[i - 1] - f[i] - 1e-10));
-            ans += t;
-            f[i] += (double)t;
-        }
-    }
-    cout << ans << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    cin >> _;
+    // cin >> _;
     while (_--)
     {
         solve();

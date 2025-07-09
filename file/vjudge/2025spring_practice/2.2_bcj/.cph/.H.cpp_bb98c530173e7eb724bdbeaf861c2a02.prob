@@ -1,0 +1,1 @@
+{"name":"Local: H","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025spring_practice\\2.2_bcj\\H.cpp","tests":[{"id":1747962321812,"input":"3 5\n1 2 2\n3 2 -3\n2 1 -1\n3 3 0\n1 3 5\n","output":"1 2 4 5\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025spring_practice\\2.2_bcj\\H.cpp","group":"local","local":true}

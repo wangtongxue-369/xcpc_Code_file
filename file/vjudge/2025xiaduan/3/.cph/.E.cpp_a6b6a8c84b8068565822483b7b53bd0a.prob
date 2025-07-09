@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025xiaduan\\3\\E.cpp","tests":[{"id":1751019729195,"input":"7 2\nD 0.33\nD 0.11\nD 0.06\nC 0.30\nB 0.15\nA 0.04\nS 0.01\n","output":"207.0000\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025xiaduan\\3\\E.cpp","group":"local","local":true}

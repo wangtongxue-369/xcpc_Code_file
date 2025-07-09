@@ -1,0 +1,1 @@
+{"name":"Local: C","url":"e:\\xcpc_Code_file\\file\\codeforces\\race2\\1033_div2\\C.cpp","tests":[{"id":1750518156539,"input":"2\n1 2\n4 6\n","output":"-1\n3\n3 1\n1 2\n2 4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\codeforces\\race2\\1033_div2\\C.cpp","group":"local","local":true}
