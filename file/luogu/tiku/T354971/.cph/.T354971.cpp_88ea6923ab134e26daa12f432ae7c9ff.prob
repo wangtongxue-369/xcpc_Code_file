@@ -1,0 +1,1 @@
+{"name":"Local: T354971","url":"e:\\xcpc_Code_file\\file\\luogu\\tiku\\T354971\\T354971.cpp","tests":[{"id":1753856109856,"input":"5 3\n6 5 1000000009 1 4008\n7777 5 4008\n","output":"No\nYes\nYes\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\luogu\\tiku\\T354971\\T354971.cpp","group":"local","local":true}

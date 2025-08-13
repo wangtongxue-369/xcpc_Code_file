@@ -1,0 +1,1 @@
+{"name":"Local: 1531","url":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.17\\1531.cpp","tests":[{"id":1752737581640,"input":"3\n2 1\n4 1\n3 2\n","output":"3\n"},{"id":1752737586417,"input":"2\n2 3\n8 1\n","output":"0\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.17\\1531.cpp","group":"local","local":true}

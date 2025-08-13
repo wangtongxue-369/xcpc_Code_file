@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define ull unsigned long long
+#define INF 0x3f3f3f3f
+#define PII pair<ll, ll>
+const ll mod = 1e9 + 7;
+const ll MAXN = 500005;
+const ll base1 = 131;
+const ll base2 = 127;
+ll _ = 1, n, m, ans = 0; // a[MAXN], f[MAXN];
+void solve()
+{
+    ll a, b, x, y;
+    cin >> a >> b >> x >> y;
+    if (a == b)
+    {
+        cout << 0 << '\n';
+        return;
+    }
+    if (a > b)
+    {
+        if ((a ^ 1) == b)
+        {
+            cout << y << '\n';
+            return;
+        }
+        else
+        {
+            cout << -1 << '\n';
+            return;
+        }
+    }
+    if (x <= y)
+    {
+        cout << abs(a - b) * x << '\n';
+        return;
+    }
+    ans = 0;
+    for (int i = a; i < b; i++)
+    {
+        if (i % 2 == 0)
+        {
+            ans += y;
+        }
+        else
+        {
+            ans += x;
+        }
+    }
+    cout << ans << '\n';
+}
+signed main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cin >> _;
+    while (_--)
+    {
+        solve();
+    }
+    return 0;
+}

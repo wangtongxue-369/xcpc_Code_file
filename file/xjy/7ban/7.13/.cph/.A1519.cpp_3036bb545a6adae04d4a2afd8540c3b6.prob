@@ -1,0 +1,1 @@
+{"name":"Local: A1519","url":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.13\\A1519.cpp","tests":[{"id":1752422155293,"input":"3 65 23 5 34 1 30 0\n","output":"30 1 34 5 23 65 3\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.13\\A1519.cpp","group":"local","local":true}

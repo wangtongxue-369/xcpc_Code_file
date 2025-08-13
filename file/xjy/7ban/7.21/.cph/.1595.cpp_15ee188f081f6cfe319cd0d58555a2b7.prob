@@ -1,0 +1,1 @@
+{"name":"Local: 1595","url":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.21\\1595.cpp","tests":[{"id":1753074608427,"input":"5\n1 0 0 0 1\n","output":"0\n"},{"id":1753074614650,"input":"5\n1 2 3 4 5\n","output":"3\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.21\\1595.cpp","group":"local","local":true}

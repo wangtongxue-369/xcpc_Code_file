@@ -1,0 +1,1 @@
+{"name":"Local: T354968","url":"e:\\xcpc_Code_file\\file\\luogu\\tiku\\T354968\\T354968.cpp","tests":[{"id":1753856396222,"input":"11 6\n1 2 3 3 4 4 6 6 6 7 7\n\n","output":"7 9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\luogu\\tiku\\T354968\\T354968.cpp","group":"local","local":true}

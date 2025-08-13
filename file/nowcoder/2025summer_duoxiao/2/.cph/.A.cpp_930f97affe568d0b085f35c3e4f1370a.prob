@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\xcpc_Code_file\\file\\nowcoder\\2025summer_duoxiao\\2\\A.cpp","tests":[{"id":1752726160227,"input":"3\n3\n1 0 1\n3\n0 0 0\n3\n1 -1 1","output":"2\n0\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\nowcoder\\2025summer_duoxiao\\2\\A.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: A1529","url":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.16\\A1529.cpp","tests":[{"id":1752652912233,"input":"10\n20 40 32 67 40 20 89 300 400 15","output":"8\n15\n20\n32\n40\n67\n89\n300\n400"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\xjy\\7ban\\7.16\\A1529.cpp","group":"local","local":true}

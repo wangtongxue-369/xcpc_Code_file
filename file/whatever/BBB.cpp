@@ -1,3 +1,11 @@
+/*
+██╗  ██╗ █████╗ ███╗   ██╗███████╗███████╗██████╗
+██║  ██║██╔══██╗████╗  ██║██╔════╝██╔════╝██╔══██╗
+███████║███████║██╔██╗ ██║███████╗█████╗  ██████╔╝
+██╔══██║██╔══██║██║╚██╗██║╚════██║██╔══╝  ██╔══██╗
+██║  ██║██║  ██║██║ ╚████║███████║███████╗██║  ██║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝  ╚═╝
+*/
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
@@ -11,19 +19,9 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    n = 4;
-    vector<ll> ve;
-    for (int i = 0; i < n; i++)
+    cin >> n;
+    for (int i = 1; i <= n; i++)
     {
-        ve.push_back(i);
-    }
-    while (next_permutation(ve.begin(), ve.end()))
-    {
-        for (auto it : ve)
-        {
-            cout << it << ' ';
-        }
-        cout << '\n';
     }
 }
 signed main()

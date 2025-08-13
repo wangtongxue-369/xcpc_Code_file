@@ -1,0 +1,1 @@
+{"name":"Local: jswt","url":"e:\\xcpc_Code_file\\file\\kyfs\\hdsf\\2024\\jswt.cpp","tests":[{"id":1754927660684,"input":"2\n2 5 20\n2 3\n3 201 1120\n3 7 11","output":"10\n443"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\kyfs\\hdsf\\2024\\jswt.cpp","group":"local","local":true}
