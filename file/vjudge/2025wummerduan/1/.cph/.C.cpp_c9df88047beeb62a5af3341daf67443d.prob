@@ -1,0 +1,1 @@
+{"name":"Local: C","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025wummerduan\\1\\C.cpp","tests":[{"id":1756225546479,"input":"4\n6 2\n8 3\n10000 2\n1919810 114514\n","output":"4\n8\n8192\n1919805"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025wummerduan\\1\\C.cpp","group":"local","local":true}

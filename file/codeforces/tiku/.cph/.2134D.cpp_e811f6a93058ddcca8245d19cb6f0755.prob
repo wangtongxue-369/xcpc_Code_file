@@ -1,0 +1,1 @@
+{"name":"Local: 2134D","url":"e:\\xcpc_Code_file\\file\\codeforces\\tiku\\2134D.cpp","tests":[{"id":1756268695727,"input":"4\n6\n4 3\n3 5\n3 1\n1 2\n3 6\n1\n2\n1 2\n5\n5 4\n2 3\n4 2\n1 4\n","output":"4 3 5\n-1\n-1\n2 4 1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\codeforces\\tiku\\2134D.cpp","group":"local","local":true}
