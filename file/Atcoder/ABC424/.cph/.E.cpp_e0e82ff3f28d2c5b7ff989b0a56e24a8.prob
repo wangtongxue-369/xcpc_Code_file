@@ -1,0 +1,1 @@
+{"name":"Local: E","url":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC424\\E.cpp","tests":[{"id":1759563591349,"input":"2\n3 4 5\n40 20 30\n10 100 50\n1 2 3 4 5 6 7 8 9 10\n","output":"10.00000000000000000000\n0.50000000000000000000\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC424\\E.cpp","group":"local","local":true}

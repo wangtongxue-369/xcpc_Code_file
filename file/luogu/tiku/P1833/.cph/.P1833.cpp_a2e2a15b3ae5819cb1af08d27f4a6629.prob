@@ -1,0 +1,1 @@
+{"name":"Local: P1833","url":"e:\\xcpc_Code_file\\file\\luogu\\tiku\\P1833\\P1833.cpp","tests":[{"id":1758601641230,"input":"6:50 7:00 3\n2 1 0\n3 3 1\n4 5 4","output":"11"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\luogu\\tiku\\P1833\\P1833.cpp","group":"local","local":true}

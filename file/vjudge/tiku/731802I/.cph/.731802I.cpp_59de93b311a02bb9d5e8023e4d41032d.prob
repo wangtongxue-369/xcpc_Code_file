@@ -1,0 +1,1 @@
+{"name":"Local: 731802I","url":"e:\\xcpc_Code_file\\file\\vjudge\\tiku\\731802I\\731802I.cpp","tests":[{"id":1758023662988,"input":"4 4 \n1 2 1 \n1 3 2 \n2 3 3 \n3 4 4","output":"7.00"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\tiku\\731802I\\731802I.cpp","group":"local","local":true}

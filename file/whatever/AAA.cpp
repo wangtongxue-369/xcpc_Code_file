@@ -1,96 +1,215 @@
+/*
+ /$$      /$$ /$$$$$$$$ /$$   /$$        /$$$$$$   /$$$$$$   /$$$$$$
+| $$  /$ | $$|__  $__/| $$  / $$       /$__  $$ /$__  $$ /$__  $$
+| $$ /$$$| $$   | $$   |  $$/ $$/      |__/  \ $$| $$  \__/| $$  \ $$
+| $$/$$ $$ $$   | $$    \  $$$$/          /$$$$$/| $$$$$$$ |  $$$$$$$
+| $$$_  $$$$    | $$     >$$  $$         |___  $$| $__  $$ \____  $$
+| $$$/ \  $$$   | $$    /$$/\  $$       /$$  \ $$| $$  \ $$ /$$  \ $$
+| $$/   \  $$   | $$   | $$  \ $$      |  $$$$$$/|  $$$$$$/|  $$$$$$/
+|__/     \__/   |__/   |__/  |__//$$$$$$\______/  \______/  \______/
+                                |______/
+*/
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define int ll
-const int mod = 1000000000 + 7;
-
-struct DSU
+#define ull unsigned long long
+#define INF 0x3f3f3f3f
+#define PII pair<ll, ll>
+const ll mod = 1e9 + 7;
+const ll MAXN = 500005;
+const ll base1 = 131;
+const ll base2 = 127;
+ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+vector<vector<PII>> ve;
+struct SCC
 {
-    vector<int> pa, size;
-
-    DSU(int size_)
+    ll n;
+    vector<vector<ll>> &adj;
+    vector<set<ll>> scc;
+    vector<ll> stk;
+    vector<ll> dfn, low, bel, ishf;
+    ll cur = 0, cnt = 0;
+    SCC(int n_, vector<vector<ll>> &adj_) : adj(adj_), n(n_)
     {
-        pa.assign(size_, 0), size.assign(size_, 1);
-        iota(pa.begin(), pa.end(), 0);
+        init(n);
     }
-    int find(int x) { return pa[x] == x ? x : pa[x] = find(pa[x]); }
-
-    bool unite(int x, int y)
+    void init(ll n)
     {
-        x = find(x), y = find(y);
-        if (x == y)
-            return false;
-        if (size[x] < size[y])
-            swap(x, y);
-        pa[y] = x;
-        size[x] += size[y];
-        return true;
+        this->n = n;
+        dfn.assign(n + 1, 0);
+        low.resize(n + 1);
+        bel.assign(n + 1, -1);
+        ishf.assign(n + 1, 0);
+        stk.clear();
+        cur = 0;
+        work();
+        work2();
+    }
+    void dfs(ll x)
+    {
+        dfn[x] = low[x] = ++cur;
+        stk.push_back(x);
+        for (auto y : adj[x])
+        {
+            if (dfn[y] == 0)
+            {
+                dfs(y);
+                low[x] = min(low[x], low[y]);
+            }
+            else if (bel[y] == -1)
+            {
+                low[x] = min(low[x], dfn[y]);
+            }
+        }
+
+        if (dfn[x] == low[x])
+        {
+            int cnt = scc.size();
+            scc.push_back({});
+            int y;
+            do
+            {
+                y = stk.back();
+                bel[y] = cnt;
+                stk.pop_back();
+                scc.back().insert(y);
+            } while (y != x);
+        }
+    }
+    vector<vector<ll>> rebuild()
+    {
+        ll cnt = scc.size();
+        vector<vector<ll>> g(cnt);
+        for (int x = 0; x < n; x++)
+        {
+            for (auto y : adj[x])
+            {
+                if (bel[x] != bel[y])
+                {
+                    g[bel[y]].push_back(bel[x]);
+                }
+            }
+        }
+        return g;
+    }
+    void work()
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (dfn[i] == 0)
+            {
+                dfs(i);
+            }
+        }
+    }
+    void work2()
+    {
+        vector<ll> fz(n + 10, 1e18);
+        for (int i = 0; i < scc.size(); i++)
+        {
+            ll x = *scc[i].begin();
+            fz[x] = 0;
+            queue<ll> q;
+            q.push(x);
+            bool flag = 0;
+            while (!q.empty())
+            {
+                auto u = q.front();
+                q.pop();
+                for (auto [v, w] : ve[u])
+                {
+                    if (scc[i].contains(v))
+                    {
+                        if (fz[v] == 1e18)
+                        {
+                            fz[v] = fz[u] + w;
+                            q.push(v);
+                        }
+                        else if (fz[v] != fz[u] + w)
+                        {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+            ishf[i] = flag;
+        }
     }
 };
-
-int qpow(int a, int n = mod - 2)
+ll mm(ll a, ll b)
 {
-    int res{1};
-    for (; n; n >>= 1, a = a * a % mod)
-        if (n & 1)
-            res = res * a % mod;
-    return res;
+    return ((a % n + n) % n + (b % n + n) % n) % n;
 }
-
-void slove()
+ll mm(ll a)
 {
-    int n, m;
-    cin >> n >> m;
-    vector<vector<int>> cnt(m);
-    string s;
-    for (int i = 0; i < n; ++i)
+    return (a % n + n) % n;
+}
+void solve()
+{
+    ll xw;
+    cin >> n >> m >> xw;
+    ve.resize(n + 10);
+    vector<vector<ll>> adj(n + 10);
+    ll u, v;
+    for (int i = 1; i <= m; i++)
     {
-        cin >> s;
-        for (int j = 0; j < m; ++j)
+        cin >> u >> v;
+        ve[mm(u)].push_back({mm(u, v), v});
+        adj[mm(u)].push_back(mm(u, v) % n);
+    }
+    SCC scc(n, adj);
+    auto tu = scc.rebuild();
+    vector<bool> vis(tu.size() + 10);
+    queue<ll> q;
+    for (ll i = 0; i < scc.scc.size(); i++)
+    {
+        if (scc.ishf[i])
         {
-            if (s[j] == '1')
-                cnt[j].push_back(i);
+            q.push(i);
+            vis[i] = 1;
         }
     }
-    DSU dsu(n);
-    for (int i = 0; i < m; ++i)
+    while (!q.empty())
     {
-        if ((int)cnt[i].size() + (int)cnt[m - i - 1].size() > 2 || i == m - i - 1 && (int)cnt[i].size() > 1)
+        auto it = q.front();
+        q.pop();
+        for (auto u : tu[it])
         {
-            cout << "0\n";
-            return;
+            if (vis[u])
+            {
+                continue;
+            }
+            scc.ishf[u] = 1;
+            vis[u] = 1;
+            q.push(u);
         }
-        for (int j = 1; j < (int)cnt[i].size(); ++j)
-        {
-            dsu.unite(cnt[i][j], cnt[i][j - 1]);
-        }
-        for (int j = 1; j < (int)cnt[m - i - 1].size(); ++j)
-        {
-            dsu.unite(cnt[m - i - 1][j], cnt[m - i - 1][j - 1]);
-        }
-        if (cnt[i].size() && cnt[m - i - 1].size())
-            dsu.unite(cnt[i][0], cnt[m - i - 1][0]);
     }
-    // for (int i = 0; i <= m / 2; i ++) {
-    // cout << cnt[i].size() << ": ";
-    // for (int &x: cnt[i]) cout << x << ' ';
-    // cout << '\n';
-    // }
-    set<int> f;
-    for (int i = 0; i < n; ++i)
-        f.insert(dsu.pa[i]);
-    cout << qpow(2, f.size()) << '\n';
-}
+    while (xw--)
+    {
+        ll x;
+        cin >> x;
+        x = mm(x);
+        ll be = scc.bel[x];
 
+        if (scc.ishf[be])
+        {
+            cout << "Yes\n";
+        }
+        else
+        {
+            cout << "No\n";
+        }
+    }
+}
 signed main()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0), cout.tie(0);
-    ll _{1};
-    cin >> _;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    // cin >> _;
     while (_--)
     {
-        slove();
+        solve();
     }
     return 0;
 }

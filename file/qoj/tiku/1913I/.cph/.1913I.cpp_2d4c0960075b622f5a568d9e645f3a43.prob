@@ -1,0 +1,1 @@
+{"name":"Local: 1913I","url":"e:\\xcpc_Code_file\\file\\qoj\\tiku\\1913I\\1913I.cpp","tests":[{"id":1760112341608,"input":"3\n8 3\n44 5 2018 8 8 2024 8 28\n5 4\n4 5 5 1 0\n5 2\n0 0 0 0 0","output":"923923948\n100\n0\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\qoj\\tiku\\1913I\\1913I.cpp","group":"local","local":true}

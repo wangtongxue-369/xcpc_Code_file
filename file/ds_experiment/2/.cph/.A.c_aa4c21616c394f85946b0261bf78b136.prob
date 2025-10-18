@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\xcpc_Code_file\\file\\ds_experiment\\2\\A.c","tests":[{"id":1757915586551,"input":"2\n2\nasd \n2021 3 3 3 3\n2\nqwe\n2022 4 4 4 4\n3\nasd\n2021 3 3 3 4\n3\nqwe\n2022 5 4 4 4\n4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\ds_experiment\\2\\A.c","group":"local","local":true}

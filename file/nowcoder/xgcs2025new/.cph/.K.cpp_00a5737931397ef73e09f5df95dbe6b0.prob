@@ -1,0 +1,1 @@
+{"name":"Local: K","url":"e:\\xcpc_Code_file\\file\\nowcoder\\xgcs2025new\\K.cpp","tests":[{"id":1758961643233,"input":"2\n1 1 4 5 1 4\n1 9 1 9 8 10","output":"-1\n0.001213"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\nowcoder\\xgcs2025new\\K.cpp","group":"local","local":true}

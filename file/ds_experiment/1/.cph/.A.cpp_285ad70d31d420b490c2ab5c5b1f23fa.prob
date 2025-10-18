@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\xcpc_Code_file\\file\\ds_experiment\\1\\A.cpp","tests":[{"id":1757320160684,"input":"1\n4 6\nA B C D\nA B 2\nB C 2\nB D 1\nA C 5\nC D 3\nA D 4\n2\nA C","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\ds_experiment\\1\\A.cpp","group":"local","local":true}
