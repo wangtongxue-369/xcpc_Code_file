@@ -20,187 +20,114 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-vector<vector<PII>> ve;
-struct SCC
-{
-    ll n;
-    vector<vector<ll>> &adj;
-    vector<set<ll>> scc;
-    vector<ll> stk;
-    vector<ll> dfn, low, bel, ishf;
-    ll cur = 0, cnt = 0;
-    SCC(int n_, vector<vector<ll>> &adj_) : adj(adj_), n(n_)
-    {
-        init(n);
-    }
-    void init(ll n)
-    {
-        this->n = n;
-        dfn.assign(n + 1, 0);
-        low.resize(n + 1);
-        bel.assign(n + 1, -1);
-        ishf.assign(n + 1, 0);
-        stk.clear();
-        cur = 0;
-        work();
-        work2();
-    }
-    void dfs(ll x)
-    {
-        dfn[x] = low[x] = ++cur;
-        stk.push_back(x);
-        for (auto y : adj[x])
-        {
-            if (dfn[y] == 0)
-            {
-                dfs(y);
-                low[x] = min(low[x], low[y]);
-            }
-            else if (bel[y] == -1)
-            {
-                low[x] = min(low[x], dfn[y]);
-            }
-        }
-
-        if (dfn[x] == low[x])
-        {
-            int cnt = scc.size();
-            scc.push_back({});
-            int y;
-            do
-            {
-                y = stk.back();
-                bel[y] = cnt;
-                stk.pop_back();
-                scc.back().insert(y);
-            } while (y != x);
-        }
-    }
-    vector<vector<ll>> rebuild()
-    {
-        ll cnt = scc.size();
-        vector<vector<ll>> g(cnt);
-        for (int x = 0; x < n; x++)
-        {
-            for (auto y : adj[x])
-            {
-                if (bel[x] != bel[y])
-                {
-                    g[bel[y]].push_back(bel[x]);
-                }
-            }
-        }
-        return g;
-    }
-    void work()
-    {
-        for (int i = 0; i < n; i++)
-        {
-            if (dfn[i] == 0)
-            {
-                dfs(i);
-            }
-        }
-    }
-    void work2()
-    {
-        vector<ll> fz(n + 10, 1e18);
-        for (int i = 0; i < scc.size(); i++)
-        {
-            ll x = *scc[i].begin();
-            fz[x] = 0;
-            queue<ll> q;
-            q.push(x);
-            bool flag = 0;
-            while (!q.empty())
-            {
-                auto u = q.front();
-                q.pop();
-                for (auto [v, w] : ve[u])
-                {
-                    if (scc[i].contains(v))
-                    {
-                        if (fz[v] == 1e18)
-                        {
-                            fz[v] = fz[u] + w;
-                            q.push(v);
-                        }
-                        else if (fz[v] != fz[u] + w)
-                        {
-                            flag = 1;
-                            break;
-                        }
-                    }
-                }
-            }
-            ishf[i] = flag;
-        }
-    }
-};
-ll mm(ll a, ll b)
-{
-    return ((a % n + n) % n + (b % n + n) % n) % n;
-}
-ll mm(ll a)
-{
-    return (a % n + n) % n;
-}
 void solve()
 {
-    ll xw;
-    cin >> n >> m >> xw;
-    ve.resize(n + 10);
-    vector<vector<ll>> adj(n + 10);
-    ll u, v;
-    for (int i = 1; i <= m; i++)
+    cin >> n;
+    string s;
+    vector<string> ve(n + 10);
+    for (int i = 1; i <= n; i++)
     {
-        cin >> u >> v;
-        ve[mm(u)].push_back({mm(u, v), v});
-        adj[mm(u)].push_back(mm(u, v) % n);
+        cin >> ve[i];
+        ve[i] = ' ' + ve[i];
     }
-    SCC scc(n, adj);
-    auto tu = scc.rebuild();
-    vector<bool> vis(tu.size() + 10);
-    queue<ll> q;
-    for (ll i = 0; i < scc.scc.size(); i++)
+    vector<ll> cu(n + 10, 0);
+    set<ll> se;
+    for (int i = 1; i <= n; i++)
+        se.insert(i);
+    for (auto it1 : se)
     {
-        if (scc.ishf[i])
+        for (auto it2 : se)
         {
-            q.push(i);
-            vis[i] = 1;
-        }
-    }
-    while (!q.empty())
-    {
-        auto it = q.front();
-        q.pop();
-        for (auto u : tu[it])
-        {
-            if (vis[u])
+            if (ve[it1][it2] == '1')
             {
-                continue;
+                cu[it1]++;
             }
-            scc.ishf[u] = 1;
-            vis[u] = 1;
-            q.push(u);
         }
     }
-    while (xw--)
+    ll A = -1, B = -1, C = -1;
+    for (auto it : se)
+        if (A == -1 || cu[A] < cu[it])
+            A = it;
+    // cout << A << '\n';
+    se.clear();
+    for (int i = 1; i <= n; i++)
     {
-        ll x;
-        cin >> x;
-        x = mm(x);
-        ll be = scc.bel[x];
-
-        if (scc.ishf[be])
+        if (ve[i][A] == '1')
         {
-            cout << "Yes\n";
-        }
-        else
-        {
-            cout << "No\n";
+            se.insert(i);
         }
     }
+    if (se.size() == 0)
+    {
+        cout << "NOT FOUND\n";
+        return;
+    }
+    // B
+    for (int i = 1; i <= n; i++)
+        cu[i] = 0;
+    B = -1;
+    for (auto it1 : se)
+    {
+        for (auto it2 : se)
+        {
+            if (ve[it1][it2] == '1')
+            {
+                cu[it1]++;
+            }
+        }
+    }
+    for (auto it : se)
+        if (B == -1 || cu[B] < cu[it])
+            B = it;
+    // cout << B << '\n';
+    set<ll> se1;
+    for (int it = 1; it <= n; it++)
+    {
+        cu[it] = 0;
+        if (ve[it][B] == '1')
+        {
+            se1.insert(it);
+        }
+    }
+    if (se1.size() == 0)
+    {
+        cout << "NOT FOUND\n";
+        return;
+    }
+    se = se1;
+    se1.clear();
+    // C
+    for (int i = 1; i <= n; i++)
+        cu[i] = 0;
+    C = -1;
+    for (auto it1 : se)
+    {
+        for (auto it2 : se)
+        {
+            if (ve[it1][it2] == '1')
+            {
+                cu[it1]++;
+            }
+        }
+    }
+    for (auto it : se)
+        if (C == -1 || cu[C] < cu[it])
+            C = it;
+    // cout << C << '\n';
+    for (int it = 1; it <= n; it++)
+    {
+        cu[it] = 0;
+        if (ve[it][C] == '1')
+        {
+            se1.insert(it);
+        }
+    }
+    if (se1.size() == 0)
+    {
+        cout << "NOT FOUND\n";
+        return;
+    }
+    cout << A << ' ' << B << ' ' << C << '\n';
 }
 signed main()
 {

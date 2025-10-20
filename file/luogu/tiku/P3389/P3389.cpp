@@ -49,7 +49,6 @@ void solve()
         }
         swap(a[r], a[i]);
 
-        zhi++;
         double div = a[i][i];
         for (int j = i; j <= n + 1; j++)
         {
