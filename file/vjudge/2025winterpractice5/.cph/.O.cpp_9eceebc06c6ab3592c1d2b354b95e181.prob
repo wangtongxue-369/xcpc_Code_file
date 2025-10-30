@@ -1,0 +1,1 @@
+{"name":"Local: O","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025winterpractice5\\O.cpp","tests":[{"id":1761198977944,"input":"5\n1 123\n1 234\n2\n2\n2","output":"234\n123\nempty"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025winterpractice5\\O.cpp","group":"local","local":true}

@@ -61,6 +61,7 @@ void solve()
             dfs(it, x);
         }
     };
+    priority_queue<ll> q;
     dfs(n, 0);
     ll p = dep[1] % 2;
     vector<PII> ans;

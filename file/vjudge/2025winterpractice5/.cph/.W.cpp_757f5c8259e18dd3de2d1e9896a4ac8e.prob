@@ -1,0 +1,1 @@
+{"name":"Local: W","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025winterpractice5\\W.cpp","tests":[{"id":1761216377028,"input":"2\n3\nADAM\nBOB\nJOHNSON\n2\nA AB C\nDEF","output":"JOHNSON\nA AB C"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025winterpractice5\\W.cpp","group":"local","local":true}
