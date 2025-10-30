@@ -1,0 +1,1 @@
+{"name":"Local: Q","url":"e:\\xcpc_Code_file\\file\\vjudge\\2025winterpractice5\\Q.cpp","tests":[{"id":1761200373182,"input":"2\n2 3\n1 2 \n2 3 4\n3 3\n5 3 4\n3 4 1","output":"25\n50"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\vjudge\\2025winterpractice5\\Q.cpp","group":"local","local":true}

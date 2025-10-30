@@ -16,7 +16,7 @@ using namespace std;
 #define INF 0x3f3f3f3f
 #define PII pair<ll, ll>
 const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
+const ll MAXN = 2000005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
@@ -24,116 +24,239 @@ void solve()
 {
     cin >> n;
     string s;
-    vector<string> ve(n + 10);
+    cin >> s;
+    s = '1' + s + '1';
+    ll st = n, tr = 1;
+    vector<array<ll, 3>> ve(n + 10, {0, 0, 0});
+    // CWP
     for (int i = 1; i <= n; i++)
     {
-        cin >> ve[i];
-        ve[i] = ' ' + ve[i];
+        if (s[i] == 'C')
+            ve[i][0]++;
+        else if (s[i] == 'W')
+            ve[i][1]++;
+        else if (s[i] == 'P')
+            ve[i][2]++;
+        ve[i][0] += ve[i - 1][0], ve[i][1] += ve[i - 1][1], ve[i][2] += ve[i - 1][2];
     }
-    vector<ll> cu(n + 10, 0);
-    set<ll> se;
-    for (int i = 1; i <= n; i++)
-        se.insert(i);
-    for (auto it1 : se)
+    for (ll i = 1; i < n; i++)
     {
-        for (auto it2 : se)
+        if (s[i] == s[i + 1])
         {
-            if (ve[it1][it2] == '1')
-            {
-                cu[it1]++;
-            }
+            st = min(st, i);
+        }
+        if (s[i] == s[i + 1])
+        {
+            tr = max(tr, i + 1);
         }
     }
-    ll A = -1, B = -1, C = -1;
-    for (auto it : se)
-        if (A == -1 || cu[A] < cu[it])
-            A = it;
-    // cout << A << '\n';
-    se.clear();
-    for (int i = 1; i <= n; i++)
+    if (st == n && tr == 1)
     {
-        if (ve[i][A] == '1')
-        {
-            se.insert(i);
-        }
-    }
-    if (se.size() == 0)
-    {
-        cout << "NOT FOUND\n";
+        cout << "Beautiful\n";
         return;
     }
-    // B
-    for (int i = 1; i <= n; i++)
-        cu[i] = 0;
-    B = -1;
-    for (auto it1 : se)
+    PII ans = {1, n};
+    function<bool(ll l, ll r)> check = [&](ll l, ll r)
     {
-        for (auto it2 : se)
+        ll sc = ve[r][0] - ve[l - 1][0], sw = ve[r][1] - ve[l - 1][1], sp = ve[r][2] - ve[l - 1][2];
+        ll maxc = max({sc, sw, sp});
+        ll len = r - l + 1;
+        bool flag = 0;
+        if (len % 2 == 0)
         {
-            if (ve[it1][it2] == '1')
+            char tmp = s[l];
+            if ('C' != s[l - 1] && sc)
             {
-                cu[it1]++;
+                s[l] = 'C';
+                sc--, len--, l++;
+                maxc = max({sc, sw, sp});
+                if (maxc == (len + 1) / 2)
+                {
+                    if (sc == maxc && (s[l - 1] != 'C' && s[r + 1] != 'C'))
+                    {
+                        flag = 1;
+                    }
+                    else if (sw == maxc && s[l - 1] != 'W' && s[r + 1] != 'W')
+                    {
+                        flag = 1;
+                    }
+                    else if (sp == maxc && s[l - 1] != 'P' && s[r + 1] != 'P')
+                    {
+                        flag = 1;
+                    }
+                }
+                else if (maxc < (len + 1) / 2)
+                {
+                    flag = 1;
+                }
+                sc++, len++, l--;
+            }
+            if ('W' != s[l - 1] && sw)
+            {
+                s[l] = 'W';
+                sw--, len--, l++;
+                maxc = max({sc, sw, sp});
+                if (maxc == (len + 1) / 2)
+                {
+                    if (sc == maxc && (s[l - 1] != 'C' && s[r + 1] != 'C'))
+                    {
+                        flag = 1;
+                    }
+                    else if (sw == maxc && s[l - 1] != 'W' && s[r + 1] != 'W')
+                    {
+                        flag = 1;
+                    }
+                    else if (sp == maxc && s[l - 1] != 'P' && s[r + 1] != 'P')
+                    {
+                        flag = 1;
+                    }
+                }
+                else if (maxc < (len + 1) / 2)
+                {
+                    flag = 1;
+                }
+                sw++, len++, l--;
+            }
+            if ('P' != s[l - 1] && sp)
+            {
+                s[l] = 'P';
+                sp--, len--, l++;
+                maxc = max({sc, sw, sp});
+                if (maxc == (len + 1) / 2)
+                {
+                    if (sc == maxc && (s[l - 1] != 'C' && s[r + 1] != 'C'))
+                    {
+                        flag = 1;
+                    }
+                    else if (sw == maxc && s[l - 1] != 'W' && s[r + 1] != 'W')
+                    {
+                        flag = 1;
+                    }
+                    else if (sp == maxc && s[l - 1] != 'P' && s[r + 1] != 'P')
+                    {
+                        flag = 1;
+                    }
+                }
+                else if (maxc < (len + 1) / 2)
+                {
+                    flag = 1;
+                }
+                sp++, len++, l--;
+            }
+            s[l] = tmp;
+        }
+        if (len % 2 == 1)
+        {
+            if (maxc == (len + 1) / 2)
+            {
+                if (sc == maxc && (s[l - 1] != 'C' && s[r + 1] != 'C'))
+                {
+                    flag = 1;
+                }
+                else if (sw == maxc && s[l - 1] != 'W' && s[r + 1] != 'W')
+                {
+                    flag = 1;
+                }
+                else if (sp == maxc && s[l - 1] != 'P' && s[r + 1] != 'P')
+                {
+                    flag = 1;
+                }
+            }
+            else if (maxc < (len + 1) / 2)
+            {
+
+                flag = 1;
             }
         }
-    }
-    for (auto it : se)
-        if (B == -1 || cu[B] < cu[it])
-            B = it;
-    // cout << B << '\n';
-    set<ll> se1;
-    for (int it = 1; it <= n; it++)
+        return flag;
+    };
+    if (check(1, n) == 0)
     {
-        cu[it] = 0;
-        if (ve[it][B] == '1')
-        {
-            se1.insert(it);
-        }
-    }
-    if (se1.size() == 0)
-    {
-        cout << "NOT FOUND\n";
+        cout << "Impossible\n";
         return;
     }
-    se = se1;
-    se1.clear();
-    // C
-    for (int i = 1; i <= n; i++)
-        cu[i] = 0;
-    C = -1;
-    for (auto it1 : se)
+    for (int i = 1; i <= st + 1; i++)
     {
-        for (auto it2 : se)
+        ll l = max((ll)i, tr - 1), r = n;
+        while (l < r)
         {
-            if (ve[it1][it2] == '1')
+            ll mid = (l + r) >> 1;
+            // cerr << i << ' ' << mid << '\n';
+            if (check(i, mid))
             {
-                cu[it1]++;
+                r = mid;
+            }
+            else
+            {
+                l = mid + 1;
             }
         }
-    }
-    for (auto it : se)
-        if (C == -1 || cu[C] < cu[it])
-            C = it;
-    // cout << C << '\n';
-    for (int it = 1; it <= n; it++)
-    {
-        cu[it] = 0;
-        if (ve[it][C] == '1')
+        if (check(i, l) == 0)
         {
-            se1.insert(it);
+            continue;
+        }
+        // cout << i << ' ' << l << '\n';
+        if (ans.second - ans.first + 1 > l - i + 1)
+        {
+            ans = {i, l};
         }
     }
-    if (se1.size() == 0)
+    if (!check(ans.first, ans.second))
     {
-        cout << "NOT FOUND\n";
+        cout << "Impossible\n";
         return;
     }
-    cout << A << ' ' << B << ' ' << C << '\n';
+    cout << "Possible\n";
+
+    cout << ans.first << ' ' << ans.second << '\n';
+
+    ll l = ans.first, r = ans.second;
+    ll len = r - l + 1;
+    ll sc = ve[r][0] - ve[l - 1][0], sw = ve[r][1] - ve[l - 1][1], sp = ve[r][2] - ve[l - 1][2];
+    for (int i = l; i <= r; i++)
+    {
+        vector<pair<ll, char>> c;
+        c.push_back({sc, 'C'});
+        c.push_back({sw, 'W'});
+        c.push_back({sp, 'P'});
+        sort(c.begin(), c.end(), greater<PII>());
+        for (auto [cnt, ch] : c)
+        {
+            if (cnt == 0)
+            {
+                continue;
+            }
+            if (s[i - 1] == ch)
+            {
+                continue;
+            }
+            s[i] = ch;
+            if (ch == 'C')
+            {
+                sc--;
+            }
+            else if (ch == 'W')
+            {
+                sw--;
+            }
+            else
+            {
+                sp--;
+            }
+            break;
+        }
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        cout << s[i];
+    }
+    cout << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin >> _;
+    cin >> _;
     while (_--)
     {
         solve();

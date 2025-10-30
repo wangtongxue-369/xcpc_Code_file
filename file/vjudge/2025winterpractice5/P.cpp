@@ -20,71 +20,58 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+ll tx[] = {-1, 0, 1, 0, -1, -1, 1, 1};
+ll ty[] = {0, -1, 0, 1, -1, 1, -1, 1};
 void solve()
 {
-    cin >> n;
-    vector<vector<ll>> a(n + 10, vector<ll>(m + 10));
-    function<bool()> check = [&]()
-    {
-        vector<ll> h(n + 10), l(n + 10);
-        for (int i = 1; i <= n; i++)
-        {
-            for (int j = 1; j <= n; j++)
-            {
-                if (a[i][j] == 1)
-                {
-                    h[i]++, l[j]++;
-                }
-            }
-        }
-        for (int i = 1; i <= n; i++)
-        {
-            if (h[i] % 2 || l[i] % 2)
-            {
-                return 0;
-            }
-        }
-        return 1;
-    };
+    cin >> n >> m;
+    vector<vector<char>> a(n + 10, vector<char>(m + 10));
+    vector<vector<char>> f(n + 10, vector<char>(m + 10));
     for (int i = 1; i <= n; i++)
     {
-        for (int j = 1; j <= n; j++)
+        for (int j = 1; j <= m; j++)
         {
             cin >> a[i][j];
         }
     }
-    if (check())
+    function<void(ll x, ll y)> work = [&](ll x, ll y)
     {
-        cout << "OK\n";
-        return;
-    }
+        ll sum = 0;
+        for (int i = 0; i < 8; i++)
+        {
+            ll xx = tx[i] + x;
+            ll yy = ty[i] + y;
+
+            if (1 <= xx && xx <= n && 1 <= yy && yy <= m && a[xx][yy] == '1')
+            {
+
+                sum++;
+            }
+        }
+        f[x][y] = sum + '0';
+    };
     for (int i = 1; i <= n; i++)
     {
-        for (int j = 1; j <= n; j++)
+        for (int j = 1; j <= m; j++)
         {
-            if (a[i][j] == 1)
+            if (a[i][j] == '1')
             {
-                a[i][j] = 0;
-                if (check())
-                {
-                    cout << i << ' ' << j << '\n';
-                    return;
-                }
-                a[i][j] = 1;
+                f[i][j] = '*';
             }
             else
             {
-                a[i][j] = 1;
-                if (check())
-                {
-                    cout << i << ' ' << j << '\n';
-                    return;
-                }
-                a[i][j] = 0;
+                work(i, j);
             }
         }
     }
-    cout << "Corrupt\n";
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= m; j++)
+        {
+            cout << f[i][j];
+        }
+        cout << '\n';
+    }
 }
 signed main()
 {
