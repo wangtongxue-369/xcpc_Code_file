@@ -12,7 +12,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define ld long double
 #define ull unsigned long long
 #define INF 0x3f3f3f3f
 #define PII pair<ll, ll>
@@ -23,57 +22,43 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    ld ans = 0;
-    cin >> n;
-    map<ll, ll> ma;
-    ll gg = 0;
-    for (int i = 1; i <= n; i++)
+    ll x, y, z;
+    cin >> x >> y >> z;
+    for (int i = 0; i <= 32; i++)
     {
-        cin >> a[i];
-        gg = gcd(gg, a[i]);
-        ma[a[i]]++;
-    }
-    vector<ld> h(n + 10);
-    h[0] = 0;
-    for (ll i = 1; i <= n + 1; i++)
-    {
-        h[i] = h[i - 1];
-        h[i] += (ld)1 / i;
-    }
-    ans = h[n] * gg;
-    for (int i = 1; i <= n; i++)
-    {
-        ans = max(ans, (ld)a[i]);
-    }
-    for (int i = 1; i <= n; i++)
-    {
-        if (i > 1e6)
+        bool flag = 0;
+        for (int a = 0; a <= 1; a++)
         {
-            continue;
-        }
-        for (int j = 1; j * j <= a[i]; j++)
-        {
-            if (a[i] & j == 0)
+            for (int b = 0; b <= 1; b++)
             {
-                ma[j]++;
-                if (j * (a[i] / j) != a[i])
+                for (int c = 0; c <= 1; c++)
                 {
-                    ma[a[i] / j]++;
+                    if ((x & (1ll << i)) && ((a & b) == 1) || ((x & (1ll << i)) == 0) && ((a & b) == 0))
+                    {
+                        if ((y & (1ll << i)) && ((b & c) == 1) || ((y & (1ll << i)) == 0) && ((b & c) == 0))
+                        {
+                            if ((z & (1ll << i)) && ((a & c) == 1) || ((z & (1ll << i)) == 0) && ((a & c) == 0))
+                            {
+                                flag = 1;
+                            }
+                        }
+                    }
                 }
             }
         }
+        if (flag == 0)
+        {
+            cout << "NO\n";
+            return;
+        }
     }
-    for (auto [c, cnt] : ma)
-    {
-        ans = max(ans, (ld)c * h[cnt]);
-    }
-    cout << fixed << setprecision(10) << ans << '\n';
+    cout << "YES\n";
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin >> _;
+    cin >> _;
     while (_--)
     {
         solve();

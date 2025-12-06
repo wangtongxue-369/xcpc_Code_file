@@ -12,7 +12,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define ld long double
 #define ull unsigned long long
 #define INF 0x3f3f3f3f
 #define PII pair<ll, ll>
@@ -23,57 +22,29 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    ld ans = 0;
     cin >> n;
     map<ll, ll> ma;
-    ll gg = 0;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        gg = gcd(gg, a[i]);
         ma[a[i]]++;
     }
-    vector<ld> h(n + 10);
-    h[0] = 0;
-    for (ll i = 1; i <= n + 1; i++)
+    sort(a + 1, a + 1 + n);
+    for (int i = 2; i <= n - 1; i += 2)
     {
-        h[i] = h[i - 1];
-        h[i] += (ld)1 / i;
-    }
-    ans = h[n] * gg;
-    for (int i = 1; i <= n; i++)
-    {
-        ans = max(ans, (ld)a[i]);
-    }
-    for (int i = 1; i <= n; i++)
-    {
-        if (i > 1e6)
+        if (a[i] != a[i + 1])
         {
-            continue;
-        }
-        for (int j = 1; j * j <= a[i]; j++)
-        {
-            if (a[i] & j == 0)
-            {
-                ma[j]++;
-                if (j * (a[i] / j) != a[i])
-                {
-                    ma[a[i] / j]++;
-                }
-            }
+            cout << "NO\n";
+            return;
         }
     }
-    for (auto [c, cnt] : ma)
-    {
-        ans = max(ans, (ld)c * h[cnt]);
-    }
-    cout << fixed << setprecision(10) << ans << '\n';
+    cout << "YES\n";
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin >> _;
+    cin >> _;
     while (_--)
     {
         solve();

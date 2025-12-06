@@ -12,7 +12,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define ld long double
 #define ull unsigned long long
 #define INF 0x3f3f3f3f
 #define PII pair<ll, ll>
@@ -20,60 +19,64 @@ const ll mod = 1e9 + 7;
 const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+ll _ = 1, n, m, ans = 0, a1[MAXN], a2[MAXN];
 void solve()
 {
-    ld ans = 0;
     cin >> n;
-    map<ll, ll> ma;
-    ll gg = 0;
     for (int i = 1; i <= n; i++)
     {
-        cin >> a[i];
-        gg = gcd(gg, a[i]);
-        ma[a[i]]++;
-    }
-    vector<ld> h(n + 10);
-    h[0] = 0;
-    for (ll i = 1; i <= n + 1; i++)
-    {
-        h[i] = h[i - 1];
-        h[i] += (ld)1 / i;
-    }
-    ans = h[n] * gg;
-    for (int i = 1; i <= n; i++)
-    {
-        ans = max(ans, (ld)a[i]);
+        cin >> a1[i];
     }
     for (int i = 1; i <= n; i++)
     {
-        if (i > 1e6)
+        cin >> a2[i];
+    }
+    m = 2 * n;
+    vector<ll> pmi1(n + 10), pma1(n + 10);
+    vector<ll> hmi2(n + 10), hma2(n + 10);
+    // vector<ll> pmi2(n + 10), pma2(n + 10);
+    pmi1[0] = 1e18, pma1[0] = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        pmi1[i] = min(pmi1[i - 1], a1[i]);
+        pma1[i] = max(pma1[i - 1], a1[i]);
+    }
+    hmi2[n + 1] = 1e18, hma2[n + 1] = 0;
+    for (int i = n; i >= 1; i--)
+    {
+        hmi2[i] = min(hmi2[i + 1], a2[i]);
+        hma2[i] = max(hma2[i + 1], a2[i]);
+    }
+    vector<PII> ve;
+    // 分界点的最大最小
+    for (int i = 1; i <= n; i++)
+    {
+        ve.push_back({min(pmi1[i], hmi2[i]), max(pma1[i], hma2[i])});
+    }
+    sort(ve.begin(), ve.end(), greater<>());
+    ans = 0;
+    ll p = 0;
+    // 可行的r
+    ll minnr = 2 * n + 1;
+    for (ll i = 2 * n; i >= 1; i--)
+    {
+        while (p < n && ve[p].first >= i)
         {
-            continue;
+            minnr = min(minnr, ve[p].second);
+            p++;
         }
-        for (int j = 1; j * j <= a[i]; j++)
+        if (p != 0)
         {
-            if (a[i] & j == 0)
-            {
-                ma[j]++;
-                if (j * (a[i] / j) != a[i])
-                {
-                    ma[a[i] / j]++;
-                }
-            }
+            ans += 2 * n - minnr + 1;
         }
     }
-    for (auto [c, cnt] : ma)
-    {
-        ans = max(ans, (ld)c * h[cnt]);
-    }
-    cout << fixed << setprecision(10) << ans << '\n';
+    cout << ans << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin >> _;
+    cin >> _;
     while (_--)
     {
         solve();

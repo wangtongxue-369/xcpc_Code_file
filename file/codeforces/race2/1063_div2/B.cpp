@@ -12,7 +12,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define ld long double
 #define ull unsigned long long
 #define INF 0x3f3f3f3f
 #define PII pair<ll, ll>
@@ -23,57 +22,55 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    ld ans = 0;
     cin >> n;
-    map<ll, ll> ma;
-    ll gg = 0;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        gg = gcd(gg, a[i]);
-        ma[a[i]]++;
     }
-    vector<ld> h(n + 10);
-    h[0] = 0;
-    for (ll i = 1; i <= n + 1; i++)
-    {
-        h[i] = h[i - 1];
-        h[i] += (ld)1 / i;
-    }
-    ans = h[n] * gg;
+    string s;
+    cin >> s;
+    s = ' ' + s;
+    ll pmi = 1, pma = 1;
     for (int i = 1; i <= n; i++)
     {
-        ans = max(ans, (ld)a[i]);
-    }
-    for (int i = 1; i <= n; i++)
-    {
-        if (i > 1e6)
+        if (a[i] < a[pmi])
         {
-            continue;
+            pmi = i;
         }
-        for (int j = 1; j * j <= a[i]; j++)
+        if (a[i] > a[pma])
         {
-            if (a[i] & j == 0)
-            {
-                ma[j]++;
-                if (j * (a[i] / j) != a[i])
-                {
-                    ma[a[i] / j]++;
-                }
-            }
+            pma = i;
         }
     }
-    for (auto [c, cnt] : ma)
+    if (s[1] == '1' || s[n] == '1' || s[pmi] == '1' || s[pma] == '1')
     {
-        ans = max(ans, (ld)c * h[cnt]);
+        cout << -1 << '\n';
+        return;
     }
-    cout << fixed << setprecision(10) << ans << '\n';
+    if (pmi < pma)
+    {
+        cout << 5 << '\n';
+        cout << 1 << ' ' << pmi << '\n';
+        cout << 1 << ' ' << pma << '\n';
+        cout << pma << ' ' << n << '\n';
+        cout << pmi << ' ' << n << '\n';
+        cout << pmi << ' ' << pma << '\n';
+    }
+    else
+    {
+        cout << 5 << '\n';
+        cout << 1 << ' ' << pmi << '\n';
+        cout << 1 << ' ' << pma << '\n';
+        cout << pma << ' ' << n << '\n';
+        cout << pmi << ' ' << n << '\n';
+        cout << pma << ' ' << pmi << '\n';
+    }
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    // cin >> _;
+    cin >> _;
     while (_--)
     {
         solve();
