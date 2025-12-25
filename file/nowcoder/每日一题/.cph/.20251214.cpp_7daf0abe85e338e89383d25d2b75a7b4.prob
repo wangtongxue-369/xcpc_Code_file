@@ -1,0 +1,1 @@
+{"name":"Local: 20251214","url":"e:\\xcpc_Code_file\\file\\nowcoder\\每日一题\\20251214.cpp","tests":[{"id":1765644448345,"input":"6 4\n1 1 4 5 1 4\n1 1 1\n1 3 4\n2 4 4\n2 1 6","output":"1\n4\n5\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\nowcoder\\每日一题\\20251214.cpp","group":"local","local":true}

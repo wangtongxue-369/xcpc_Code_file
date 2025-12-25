@@ -10,34 +10,34 @@
                                 |______/
 */
 #include <bits/stdc++.h>
-#include <thread>
-#include <chrono>
-using namespace std;
-#define ll long long
-#define ld long double
-#define ull unsigned long long
-#define INF 0x3f3f3f3f
-#define PII pair<ll, ll>
-const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
-const ll base1 = 131;
-const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-void thread_function()
-{
-    cout << "Thread is running\n";
-    this_thread::sleep_for(chrono::seconds(1));
-}
 void solve()
 {
-    thread p(thread_function);
-    p.join();
+    int64_t n, q;
+    std::cin >> n >> q;
+    std::string s;
+    std::cin >> s;
+    std::vector<int64_t> a(n + 10, 0);
+    while (q--)
+    {
+        int64_t l, r;
+        std::cin >> l >> r;
+        std::string s1 = s.substr(0, l - 1);
+        std::string s2 = s.substr(r, n);
+        for (int i = l - 1; i < r; i++)
+        {
+            s1.push_back(s[i]);
+            s1.push_back(s[i]);
+        }
+        s = s1 + s2;
+    }
+    std::cout << s << '\n';
 }
 signed main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    // cin >> _;
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    int _ = 1;
+    // std::cin >> _;
     while (_--)
     {
         solve();

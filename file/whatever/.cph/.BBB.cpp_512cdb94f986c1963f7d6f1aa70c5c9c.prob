@@ -1,1 +1,1 @@
-{"name":"Local: BBB","url":"e:\\xcpc_Code_file\\file\\whatever\\BBB.cpp","tests":[{"id":1764941899553,"input":"12\n1 1 4 5 1 4 1 9 1 9 8 10","output":"13.5000000000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\whatever\\BBB.cpp","group":"local","local":true}
+{"name":"Local: BBB","url":"e:\\xcpc_Code_file\\file\\whatever\\BBB.cpp","tests":[{"id":1765358213978,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\whatever\\BBB.cpp","group":"local","local":true}

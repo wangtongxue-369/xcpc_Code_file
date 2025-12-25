@@ -10,8 +10,6 @@
                                 |______/
 */
 #include <bits/stdc++.h>
-#include <thread>
-#include <chrono>
 using namespace std;
 #define ll long long
 #define ld long double
@@ -23,15 +21,38 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-void thread_function()
-{
-    cout << "Thread is running\n";
-    this_thread::sleep_for(chrono::seconds(1));
-}
 void solve()
 {
-    thread p(thread_function);
-    p.join();
+    string s;
+    cin >> s;
+    s = ' ' + s;
+    for (int i = 1; i < s.length(); i++)
+    {
+        if (s[i] == 'P')
+        {
+            a[i] = 3;
+        }
+        else if (s[i] == 'p')
+        {
+            a[i] = 2;
+        }
+        else if (s[i] == 'G')
+        {
+            a[i] = 1;
+        }
+        else
+        {
+            a[i] = 0;
+        }
+        a[i] += a[i - 1];
+    }
+    cin >> n;
+    ll l, r;
+    while (n--)
+    {
+        cin >> l >> r;
+        cout << a[r] - a[l - 1] << '\n';
+    }
 }
 signed main()
 {

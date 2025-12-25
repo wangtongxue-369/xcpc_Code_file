@@ -10,34 +10,33 @@
                                 |______/
 */
 #include <bits/stdc++.h>
-#include <thread>
-#include <chrono>
-using namespace std;
-#define ll long long
-#define ld long double
-#define ull unsigned long long
-#define INF 0x3f3f3f3f
-#define PII pair<ll, ll>
-const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
-const ll base1 = 131;
-const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-void thread_function()
-{
-    cout << "Thread is running\n";
-    this_thread::sleep_for(chrono::seconds(1));
-}
 void solve()
 {
-    thread p(thread_function);
-    p.join();
+    int64_t n;
+    std::cin >> n;
+    int a[] = {3, 5, 9, 15, 21, 25, 27};
+    std::cout << ((n - 1) / 7) * 30 + a[(n - 1) % 7] << '\n';
+    // std::cin >> n;
+    // for (int i = 1; i <= n; i += 2)
+    // {
+    //     int64_t p = i, sum = 0;
+    //     while (p)
+    //     {
+    //         sum += p % 10;
+    //         p /= 10;
+    //     }
+    //     if (i % 10 == 5 || sum % 3 == 0)
+    //     {
+    //         std::cout << i << '\n';
+    //     }
+    // }
 }
 signed main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    // cin >> _;
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    int _ = 1;
+    std::cin >> _;
     while (_--)
     {
         solve();

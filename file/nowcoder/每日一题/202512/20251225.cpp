@@ -10,34 +10,29 @@
                                 |______/
 */
 #include <bits/stdc++.h>
-#include <thread>
-#include <chrono>
-using namespace std;
-#define ll long long
-#define ld long double
-#define ull unsigned long long
-#define INF 0x3f3f3f3f
-#define PII pair<ll, ll>
-const ll mod = 1e9 + 7;
-const ll MAXN = 500005;
-const ll base1 = 131;
-const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-void thread_function()
-{
-    cout << "Thread is running\n";
-    this_thread::sleep_for(chrono::seconds(1));
-}
 void solve()
 {
-    thread p(thread_function);
-    p.join();
+    int64_t x;
+    std::cin >> x;
+    if (x >= 15)
+    {
+        std::cout << "Yes\n";
+        return;
+    }
+
+    if (x == 1 || x == 4 || x == 7 || x == 9 || x == 10 || x == 12 || x == 13)
+    {
+        std::cout << "Yes\n";
+        return;
+    }
+    std::cout << "No\n";
 }
 signed main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    // cin >> _;
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    int _ = 1;
+    std::cin >> _;
     while (_--)
     {
         solve();

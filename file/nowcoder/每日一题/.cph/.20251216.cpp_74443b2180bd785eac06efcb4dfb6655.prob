@@ -1,0 +1,1 @@
+{"name":"Local: 20251216","url":"e:\\xcpc_Code_file\\file\\nowcoder\\每日一题\\20251216.cpp","tests":[{"id":1765814496762,"input":"6 2\nabcdef\n2 4\n3 6","output":"abbbccccdddef"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\nowcoder\\每日一题\\20251216.cpp","group":"local","local":true}

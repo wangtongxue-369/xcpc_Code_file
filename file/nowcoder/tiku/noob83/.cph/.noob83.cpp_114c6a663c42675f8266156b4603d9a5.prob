@@ -1,0 +1,1 @@
+{"name":"Local: noob83","url":"e:\\xcpc_Code_file\\file\\nowcoder\\tiku\\noob83\\noob83.cpp","tests":[{"id":1765282083926,"input":"7\npush 1\npush 2\nsize\nquery\npop\npop\nquery","output":"2\n2\nEmpty"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\nowcoder\\tiku\\noob83\\noob83.cpp","group":"local","local":true}
