@@ -1,0 +1,1 @@
+{"name":"Local: 20260125","url":"e:\\xcpc_Code_file\\file\\nowcoder\\每日一题\\202601\\20260125.cpp","tests":[{"id":1769302782208,"input":"3\n2 2\n123123123123\n3 2\n2 1","output":"2\n3\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\nowcoder\\每日一题\\202601\\20260125.cpp","group":"local","local":true}

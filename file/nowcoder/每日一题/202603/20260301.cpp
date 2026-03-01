@@ -25,26 +25,13 @@ void solve()
 {
     ll n;
     cin >> n;
-    ll s = 0;
-    for (int i = 1; i <= n; i++)
-    {
-        cin >> a[i];
-        s ^= a[i];
-    }
-    for (int i = 1; i <= n; i++)
-    {
-        if ((a[i] ^ s) == a[i])
-        {
-            cout << a[i] << '\n';
-            return;
-        }
-    }
+    cout << __builtin_popcountll(n) << '\n';
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    cin >> _;
+    // cin >> _;
     while (_--)
     {
         solve();
