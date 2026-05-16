@@ -7,7 +7,7 @@
 | $$$/ \  $$$   | $$    /$$/\  $$       /$$  \ $$| $$  \ $$ /$$  \ $$
 | $$/   \  $$   | $$   | $$  \ $$      |  $$$$$$/|  $$$$$$/|  $$$$$$/
 |__/     \__/   |__/   |__/  |__//$$$$$$\______/  \______/  \______/
-								|______/
+                                |______/
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,20 +23,46 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-	ll x, y;
-	while (cin >> x >> y)
-	{
-		cout << x / 8 << " " << (y / 8) % 8 << '\n';
-	}
+    cin >> n;
+    ll q;
+    cin >> q;
+    ll x;
+    map<ll, ll> ma;
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> x;
+        a[i] = x;
+        ma[x]++;
+    }
+    while (q--)
+    {
+        cin >> m;
+        vector<ll> ve;
+        for (int i = 1; i <= m; i++)
+        {
+            cin >> x;
+            ve.push_back(x);
+            ma[a[x]]--;
+            if (ma[a[x]] == 0)
+            {
+                ma.erase(a[x]);
+            }
+        }
+        cout << (*ma.begin()).first << '\n';
+        for (auto it : ve)
+        {
+            ma[a[it]]++;
+        }
+    }
 }
 signed main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cin >> _;
-	while (_--)
-	{
-		solve();
-	}
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    // cin >> _;
+    while (_--)
+    {
+        solve();
+    }
+    return 0;
 }

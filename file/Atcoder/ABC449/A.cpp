@@ -7,7 +7,7 @@
 | $$$/ \  $$$   | $$    /$$/\  $$       /$$  \ $$| $$  \ $$ /$$  \ $$
 | $$/   \  $$   | $$   | $$  \ $$      |  $$$$$$/|  $$$$$$/|  $$$$$$/
 |__/     \__/   |__/   |__/  |__//$$$$$$\______/  \______/  \______/
-								|______/
+                                |______/
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,20 +23,19 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-	ll x, y;
-	while (cin >> x >> y)
-	{
-		cout << x / 8 << " " << (y / 8) % 8 << '\n';
-	}
+    ld pai = 3.14159265358979323846;
+    ld n;
+    cin >> n;
+    cout << fixed << setprecision(10) << pai * (n / 2.0) * (n / 2.0) << '\n';
 }
 signed main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cin >> _;
-	while (_--)
-	{
-		solve();
-	}
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    // cin >> _;
+    while (_--)
+    {
+        solve();
+    }
+    return 0;
 }

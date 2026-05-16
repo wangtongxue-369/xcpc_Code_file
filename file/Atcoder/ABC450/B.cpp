@@ -7,7 +7,7 @@
 | $$$/ \  $$$   | $$    /$$/\  $$       /$$  \ $$| $$  \ $$ /$$  \ $$
 | $$/   \  $$   | $$   | $$  \ $$      |  $$$$$$/|  $$$$$$/|  $$$$$$/
 |__/     \__/   |__/   |__/  |__//$$$$$$\______/  \______/  \______/
-								|______/
+                                |______/
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,23 +20,41 @@ const ll mod = 1e9 + 7;
 const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
+ll _ = 1, n, m, ans = 0, a[105][105], f[MAXN];
 void solve()
 {
-	ll x, y;
-	while (cin >> x >> y)
-	{
-		cout << x / 8 << " " << (y / 8) % 8 << '\n';
-	}
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = i + 1; j <= n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = i + 1; j <= n; j++)
+        {
+            for (int k = j + 1; k <= n; k++)
+            {
+                if (a[i][k] > a[i][j] + a[j][k])
+                {
+                    cout << "Yes\n";
+                    return;
+                }
+            }
+        }
+    }
+    cout << "No\n";
 }
 signed main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cin >> _;
-	while (_--)
-	{
-		solve();
-	}
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    // cin >> _;
+    while (_--)
+    {
+        solve();
+    }
+    return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC455\\B.cpp","tests":[{"id":1777118493514,"input":"3 2\n.#\n#.\n##\n","output":"10\n"},{"id":1777118501395,"input":"4 5\n.#.#.\n####.\n##..#\n....#\n","output":"54\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC455\\B.cpp","group":"local","local":true}
