@@ -23,49 +23,43 @@ const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
 void solve()
 {
-    cin >> n >> m;
-    if (n == 1 && m == 1)
+    priority_queue<ll> l;
+    priority_queue<ll, vector<ll>, greater<ll>> r;
+
+    ll x;
+    cin >> x;
+
+    l.push(x);
+    cin >> n;
+    while (n--)
     {
-        cout << 0 << '\n';
-        return;
-    }
-    if (n == 1)
-    {
-        cout << 1 << ' ';
-        for (int j = 2; j < m; j++)
+        ll v;
+
+        for (int i = 1; i <= 2; i++)
         {
-            cout << 2 << ' ';
+            cin >> v;
+            if (v <= l.top())
+            {
+                l.push(v);
+            }
+            else
+            {
+                r.push(v);
+            }
+            while (l.size() < r.size())
+            {
+                l.push(r.top());
+                r.pop();
+            }
+
+            while (l.size() > r.size() + 1)
+            {
+                r.push(l.top());
+                l.pop();
+            }
         }
-        cout << 1 << '\n';
-        return;
-    }
-    if (m == 1)
-    {
-        cout << 1 << '\n';
-        for (int j = 2; j < n; j++)
-        {
-            cout << 2 << '\n';
-        }
-        cout << 1 << '\n';
-        return;
-    }
-    ll p = 4;
-    for (int i = 1; i <= n; i++)
-    {
-        if (i == 1 || i == n)
-        {
-            p = 3;
-        }
-        else
-        {
-            p = 4;
-        }
-        cout << p - 1 << ' ';
-        for (int j = 2; j < m; j++)
-        {
-            cout << p << ' ';
-        }
-        cout << p - 1 << '\n';
+
+        cout << l.top() << '\n';
     }
 }
 signed main()
