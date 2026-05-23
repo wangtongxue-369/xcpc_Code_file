@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC459\\B.cpp","tests":[{"id":1779537764391,"input":"2\nalgorithm heuristic\n","output":"24\n"},{"id":1779537768924,"input":"3\ni love you\n","output":"459\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC459\\B.cpp","group":"local","local":true}

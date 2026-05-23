@@ -1,0 +1,1 @@
+{"name":"Local: C","url":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC459\\C.cpp","tests":[{"id":1779538120122,"input":"3 7\n1 1\n1 3\n1 3\n2 1\n2 2\n1 2\n2 1\n","output":"2\n1\n1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\xcpc_Code_file\\file\\Atcoder\\ABC459\\C.cpp","group":"local","local":true}
