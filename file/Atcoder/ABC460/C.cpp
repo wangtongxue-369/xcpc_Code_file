@@ -7,7 +7,7 @@
 | $$$/ \  $$$   | $$    /$$/\  $$       /$$  \ $$| $$  \ $$ /$$  \ $$
 | $$/   \  $$   | $$   | $$  \ $$      |  $$$$$$/|  $$$$$$/|  $$$$$$/
 |__/     \__/   |__/   |__/  |__//$$$$$$\______/  \______/  \______/
-								|______/
+                                |______/
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,20 +20,44 @@ const ll mod = 1e9 + 7;
 const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
-ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-#define semaphore int
-semaphore empty = n, CL = 0, CJ = 0;
-void p1()
+ll _ = 1, n, m, ans = 0, a[MAXN], b[MAXN];
+void solve()
 {
-	do
-	{
-		// 加工一个车架子
-		P()
-	} while (1);
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+    }
+    for (int i = 1; i <= m; i++)
+    {
+        cin >> b[i];
+    }
+    sort(a + 1, a + 1 + n);
+    sort(b + 1, b + 1 + m);
+    ll p1 = 1, p2 = 1;
+    while (p1 <= n && p2 <= m)
+    {
+        if (b[p2] <= 2 * a[p1])
+        {
+            ans++;
+            p1++;
+            p2++;
+        }
+        else
+        {
+            p1++;
+        }
+    }
+    cout << ans << '\n';
 }
-
 signed main()
 {
-
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    // cin >> _;
+    while (_--)
+    {
+        solve();
+    }
+    return 0;
 }

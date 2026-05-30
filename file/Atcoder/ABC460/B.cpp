@@ -7,7 +7,7 @@
 | $$$/ \  $$$   | $$    /$$/\  $$       /$$  \ $$| $$  \ $$ /$$  \ $$
 | $$/   \  $$   | $$   | $$  \ $$      |  $$$$$$/|  $$$$$$/|  $$$$$$/
 |__/     \__/   |__/   |__/  |__//$$$$$$\______/  \______/  \______/
-								|______/
+                                |______/
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -21,19 +21,28 @@ const ll MAXN = 500005;
 const ll base1 = 131;
 const ll base2 = 127;
 ll _ = 1, n, m, ans = 0, a[MAXN], f[MAXN];
-#define semaphore int
-semaphore empty = n, CL = 0, CJ = 0;
-void p1()
+void solve()
 {
-	do
-	{
-		// 加工一个车架子
-		P()
-	} while (1);
+    ll x1, y1, r1, x2, y2, r2;
+    cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
+    ll d = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+    if ((r1 - r2) * (r1 - r2) <= d && d <= (r1 + r2) * (r1 + r2))
+    {
+        cout << "Yes\n";
+    }
+    else
+    {
+        cout << "No\n";
+    }
 }
-
 signed main()
 {
-
-	return 0;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cin >> _;
+    while (_--)
+    {
+        solve();
+    }
+    return 0;
 }
